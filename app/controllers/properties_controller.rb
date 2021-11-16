@@ -35,6 +35,8 @@ class PropertiesController < ApplicationController
         end
     end
 
+
+    # private methods
     private
 
     def find_property
