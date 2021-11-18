@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Property.destroy_all
+
+
+
+User.create(username: 'etamar', password: "password")
+
+
+Property.create(name: "312 grand st", address: "312 grand st, Brooklyn, NY, 11211", contact: "migul - 9293876651")
