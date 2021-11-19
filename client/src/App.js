@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import AuthenticatedApp from './AuthenticatedApp'
-import UnauthenticatedApp from './UnauthenticatedApp'
+import AuthApp from './AuthApp'
+import UnAuthApp from './UnAuthApp'
+import Login from './components/Login'
 
 
 
@@ -12,16 +12,17 @@ function App() {
 
   return (
     <div className='app'>
-      {currentUser ?
-        (<AuthenticatedApp
+      <UnAuthApp setCurrentUser={setCurrentUser}/>
+      {/* {currentUser ?
+        (<AuthApp
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}
         />)
         :
-        (<UnauthenticatedApp
+        (<UnAuthApp
           setCurrentUser={setCurrentUser}
         />)
-      }
+      } */}
     </div>
   );
 }
