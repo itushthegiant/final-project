@@ -10,9 +10,10 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
 
 
+
   useEffect(() => {
-    fetch('/me', {
-      credentials: 'include'
+    fetch('http://localhost:3000/me', {
+      credentials: 'include',
     })
       .then(res => {
         if (res.ok) {

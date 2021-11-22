@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :find_user, except: [:create, :show]
 
     #####################
     ####create a user
