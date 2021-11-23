@@ -12,11 +12,7 @@ function App() {
 
 
   useEffect(() => {
-<<<<<<< HEAD
-    fetch('/me', {
-=======
     fetch('http://3.132.216.5:3000/me', {
->>>>>>> 435d77a08e708b7cb6a9f9cd3f4876d78eb39595
       credentials: 'include',
     })
       .then(res => {
