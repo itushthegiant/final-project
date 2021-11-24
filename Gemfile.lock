@@ -95,6 +95,7 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
+    mysql2 (0.5.3)
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
@@ -169,6 +170,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   listen (~> 3.3)
+  mysql2
   passenger
   pg (~> 1.1)
   puma (~> 5.0)
