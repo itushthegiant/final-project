@@ -13,7 +13,11 @@ class UsersController < ApplicationController
     # show user users/:id
     #####################
     def show
-        puts 'foooo'
+        if current_user
+            render json: current_user
+        else
+            render json: {}, status: :unauthorized
+        end
     end
 
     def foo
