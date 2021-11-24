@@ -101,6 +101,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
+    passenger (6.0.12)
+      rack
+      rake (>= 0.8.1)
     pg (1.2.3)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -166,6 +169,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   listen (~> 3.3)
+  passenger
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
