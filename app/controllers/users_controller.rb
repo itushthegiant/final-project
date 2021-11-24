@@ -20,6 +20,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def foo
+        puts 'foooo'
+    end
+
 
     private
 
