@@ -13,7 +13,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch('/me', {
+    fetch('http://3.132.216.5:3000/me', {
       credentials: 'include',
     })
       .then(res => {

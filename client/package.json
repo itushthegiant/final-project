@@ -2,7 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "proxy": "http://localhost:3000",
+=======
+>>>>>>> c86fef4e7cfb7e44a7e01b9921452e44f16a0b65
   "dependencies": {
     "@craco/craco": "^6.4.0",
     "@testing-library/jest-dom": "^5.11.4",
