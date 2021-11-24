@@ -2,5 +2,5 @@
   "environment": "production",
   "port": 80,
   "daemonize": true,
-  "user": "ubuntu"
+  "user": "root"
 }
