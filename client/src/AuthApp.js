@@ -6,7 +6,7 @@ function AuthApp() {
     return (
         <div>
             <Routes>
-                <Route exact path='/overview' element={<UserOverview />} />
+                <Route exact path='/' element={<UserOverview />} />
             </Routes>
             
         </div>

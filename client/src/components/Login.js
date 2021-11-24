@@ -20,7 +20,6 @@ function Login({ setCurrentUser }) {
         } catch (err) {
             console.log(err)
         }
-
     }
 
     return (
