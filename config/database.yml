@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
+  adapter: mysql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -83,4 +83,4 @@ production:
   <<: *default
   database: final_project_production
   username: final_project
-  password: <%= ENV['FINAL_PROJECT_DATABASE_PASSWORD'] %>
+  password: '1$4545234#**'
