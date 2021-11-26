@@ -11,10 +11,13 @@ function Login({ setCurrentUser }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await baseURL.post('/login', {
-                username,
-                password,
-            })
+            const response = await baseURL.post('/login',
+                { withCredentials: true }, 
+                {
+                    username,
+                    password
+                }
+            )
             setCurrentUser(response.data)
             navigate('/overview')
         } catch (err) {
