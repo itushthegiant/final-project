@@ -1,0 +1,2 @@
+export const API_URL = !window.location.href.includes('localhost') ? 'http://3.132.216.5:3000' : 'http://localhost:3000'
+export const FRONT_URL = !window.location.href.includes('localhost') ? 'http://3.132.216.5:4000' : 'http://localhost:4000'

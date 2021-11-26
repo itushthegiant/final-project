@@ -3,7 +3,7 @@ import AuthApp from './AuthApp'
 import UnAuthApp from './UnAuthApp'
 import { BrowserRouter as Router } from 'react-router-dom'
 import NavBar from './components/NavBar'
-
+import { API_URL, FRONT_URL } from './constants'
 
 
 function App() {
@@ -13,9 +13,9 @@ function App() {
 
 
   useEffect(() => {
-    fetch('http://3.132.216.5:3000/me', {
+    fetch(API_URL + '/me', {
       credentials: 'include',
-      origin: 'http://3.132.216.5:4000'
+      origin: FRONT_URL
     })
       .then(res => {
         if (res.ok) {
