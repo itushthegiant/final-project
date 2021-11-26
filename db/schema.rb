@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_11_16_155751) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "properties", force: :cascade do |t|
+  create_table "properties", charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "contact"
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_155751) do
     t.integer "user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "latin1", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
