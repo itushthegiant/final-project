@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     fetch('http://3.132.216.5:3000/me', {
       credentials: 'include',
+      origin: 'http://3.132.216.5:4000'
     })
       .then(res => {
         if (res.ok) {
