@@ -12,11 +12,11 @@ function Login({ setCurrentUser }) {
         e.preventDefault()
         try {
             const response = await baseURL.post('/login',
-                { withCredentials: true }, 
                 {
                     username,
                     password
-                }
+                },
+                { withCredentials: true }, 
             )
             setCurrentUser(response.data)
             navigate('/overview')
