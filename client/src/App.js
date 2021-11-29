@@ -13,38 +13,38 @@ function App() {
 
 
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await baseURL.get('/me', 
-        { withCredentials: true },
-        )
-        if (response.statusText === 'OK') {
-          setCurrentUser(response.data)
-        }
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    fetchUser()
-  }, [])
-
   // useEffect(() => {
-  //   fetch(API_URL + '/me', {
-  //     credentials: 'include',
-  //     origin: FRONT_URL
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         res.json().then((data) => {
-  //           setCurrentUser(data)
-  //         })
+  //   const fetchUser = async () => {
+  //     try {
+  //       const response = await baseURL.get('/me', 
+  //       { withCredentials: true },
+  //       )
+  //       if (response.statusText === 'OK') {
+  //         setCurrentUser(response.data)
   //       }
-  //     })
-  //     .catch((e) => {
-  //       console.log(e)
-  //     })
-  // }, []);
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+  //   fetchUser()
+  // }, [])
+
+  useEffect(() => {
+    fetch(API_URL + '/me', {
+      credentials: 'include',
+      origin: FRONT_URL
+    })
+      .then(res => {
+        if (res.ok) {
+          res.json().then((data) => {
+            setCurrentUser(data)
+          })
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }, []);
 
 
   return (
