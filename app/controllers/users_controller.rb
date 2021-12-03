@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     #####################
-    ####create a user
+    ### create a user ###
     #####################
     def create
         user = User.create!(user_params)
@@ -9,9 +9,9 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
-    #####################
-    # show user users/:id
-    #####################
+    #######################
+    # show user users/:id #
+    #######################
     def show
         if current_user
             render json: current_user, status: :ok
@@ -20,9 +20,6 @@ class UsersController < ApplicationController
         end
     end
 
-    def foo
-        puts 'foooo'
-    end
 
 
     private

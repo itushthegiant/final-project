@@ -3,7 +3,7 @@ import React from 'react'
 function UserOverview() {
     return (
         <div>
-            <p>Hello World!</p>
+            <h1 className='flex items-center justify-center text-3xl'>Overview</h1>
         </div>
     )
 }

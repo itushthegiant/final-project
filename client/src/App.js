@@ -29,29 +29,30 @@ function App() {
   //   fetchUser()
   // }, [])
 
-  useEffect(() => {
-    fetch(API_URL + '/me', {
-      credentials: 'include',
-      origin: FRONT_URL
-    })
-      .then(res => {
-        if (res.ok) {
-          res.json().then((data) => {
-            setCurrentUser(data)
-          })
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }, []);
+  // useEffect(() => {
+  //   fetch(API_URL + '/me', {
+  //     credentials: 'include',
+  //     origin: FRONT_URL,
+  //   })
+  //     .then(res => {
+  //       if (res.ok) {
+  //         res.json().then((data) => {
+  //           setCurrentUser(data)
+  //         })
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       console.log(e)
+  //     })
+  // }, []);
 
 
   return (
     <div className='app'>
       <NavBar />
       <Router>
-        {currentUser ?
+        <AuthApp />
+        {/* {currentUser ?
           (<AuthApp
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
@@ -60,7 +61,7 @@ function App() {
           (<UnAuthApp
             setCurrentUser={setCurrentUser}
           />)
-        }
+        } */}
       </Router>
     </div>
   );

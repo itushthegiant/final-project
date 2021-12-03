@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
 
   get "/me", to: "users#show"
-  get "/foo", to: "users#foo"
   post "/signup", to: "users#create"
   delete "/logout", to: "sessions#destroy"
   post "/login", to: "sessions#create"
