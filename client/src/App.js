@@ -13,21 +13,21 @@ function App() {
 
 
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       const response = await baseURL.get('/me', 
-  //       { withCredentials: true },
-  //       )
-  //       if (response.statusText === 'OK') {
-  //         setCurrentUser(response.data)
-  //       }
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  //   fetchUser()
-  // }, [])
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await baseURL.get('/me', 
+        { withCredentials: true },
+        )
+        if (response.statusText === 'OK') {
+          setCurrentUser(response.data)
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchUser()
+  }, [])
 
   // useEffect(() => {
   //   fetch(API_URL + '/me', {
@@ -51,8 +51,7 @@ function App() {
     <div className='app'>
       <NavBar />
       <Router>
-        <AuthApp />
-        {/* {currentUser ?
+        {currentUser ?
           (<AuthApp
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
@@ -61,7 +60,7 @@ function App() {
           (<UnAuthApp
             setCurrentUser={setCurrentUser}
           />)
-        } */}
+        }
       </Router>
     </div>
   );
