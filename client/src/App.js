@@ -16,8 +16,8 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await baseURL.get('/me', 
-        { withCredentials: true },
+        const response = await baseURL.get('/me',
+        {withCredentials: true}
         )
         if (response.statusText === 'OK') {
           setCurrentUser(response.data)
