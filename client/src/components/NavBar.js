@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NavBar() {
+function NavBar(props) {
     return (
         <div>
             <nav className='rounded-lg'>
@@ -19,10 +19,19 @@ function NavBar() {
                                 <a href="#" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact Us</a>
                             </div>
                         </div>
-                        <div className="hidden md:flex items-center space-x-3 ">
-                            <a href="#" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
-                            <a href="#" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
-                        </div>
+
+                        {
+                            props.currentUser ?
+                                <div className="hidden md:flex items-center space-x-3 ">
+                                    <a onClick={props.handleLogOut} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Logout</a>
+                                </div>
+                                :
+                                <div className="hidden md:flex items-center space-x-3 ">
+                                    <a href="#" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
+                                    <a href="#" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
+                                </div>
+                        }
+
                         <div className="md:hidden flex items-center">
                             <button className="outline-none mobile-menu-button">
                                 <svg className=" w-6 h-6 text-gray-500 hover:text-green-500 "

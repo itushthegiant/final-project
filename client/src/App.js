@@ -38,6 +38,7 @@ function App() {
           :
           (<UnAuthApp
             setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
           />)
         }
       </Router>

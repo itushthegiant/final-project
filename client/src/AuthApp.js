@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import baseURL from './api/baseURL'
 
-function AuthApp({ setCurrentUser }) {
+function AuthApp({ setCurrentUser, currentUser }) {
 
     const navigate = useNavigate()
 
@@ -20,7 +20,7 @@ function AuthApp({ setCurrentUser }) {
 
     return (
         <div>
-            <NavBar handleLogOut={handleLogOut} />
+            <NavBar handleLogOut={handleLogOut} currentUser={currentUser}  />
             <Routes>
                 <Route exact path='/overview' element={<UserOverview />} />
             </Routes>
