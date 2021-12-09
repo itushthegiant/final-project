@@ -16,7 +16,7 @@ function Login({ setCurrentUser }) {
                     username,
                     password
                 },
-                { withCredentials: true }, 
+                { withCredentials: true },
             )
             setCurrentUser(response.data)
             navigate('/overview')
