@@ -1,6 +1,8 @@
 import React from 'react'
 
-function UserOverview() {
+function UserOverview({ currentUser }) {
+
+
     return (
         <div>
             <h1 className='flex items-center justify-center text-3xl'>Overview</h1>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function NavBar(props) {
     return (
@@ -8,27 +9,31 @@ function NavBar(props) {
                     <div className="flex justify-between">
                         <div className="flex space-x-7">
                             <div>
-                                <a href="#" className="flex items-center py-4 px-2">
+                                <a href="/login" className="flex items-center py-4 px-2">
                                     <span className="font-semibold text-gray-500 text-lg">Navigation</span>
                                 </a>
                             </div>
                             <div className="hidden md:flex items-center space-x-1">
-                                <a href="#" className="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</a>
-                                <a href="#" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Services</a>
-                                <a href="#" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About</a>
-                                <a href="#" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact Us</a>
+                                <button className="py-4 px-2 text-gray-500 border-b-4 border-green-500 font-semibold" onClick={console.log(props.currentUser)}>Home</button>
+                                <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Services</button>
+                                <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">About</button>
+                                <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Contact Us</button>
                             </div>
                         </div>
 
                         {
                             props.currentUser ?
                                 <div className="hidden md:flex items-center space-x-3 ">
-                                    <a onClick={props.handleLogOut} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Logout</a>
+                                    <span>Hello {props.currentUser.username}</span>
+                                    <Link to='/login'>
+                                    <button onClick={props.handleLogOut} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Logout</button>
+                                    </Link>
                                 </div>
                                 :
                                 <div className="hidden md:flex items-center space-x-3 ">
-                                    <a href="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
-                                    <a href="/signup" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
+                                    <span>Hello Guest</span>
+                                    <button href="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</button>
+                                    <button href="/signup" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</button>
                                 </div>
                         }
 
@@ -51,10 +56,10 @@ function NavBar(props) {
                 </div>
                 <div className="hidden mobile-menu">
                     <ul className="">
-                        <li className="active"><a href="#" className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
+                        <li className="active"><button className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</button></li>
+                        <li><button className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</button></li>
+                        <li><button className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</button></li>
+                        <li><button className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</button></li>
                     </ul>
                 </div>
             </nav>
