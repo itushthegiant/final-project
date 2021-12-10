@@ -14,7 +14,7 @@ function NavBar(props) {
                                 </a>
                             </div>
                             <div className="hidden md:flex items-center space-x-1">
-                                <button className="py-4 px-2 text-gray-500 border-b-4 border-green-500 font-semibold" onClick={console.log(props.currentUser)}>Home</button>
+                                <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Home</button>
                                 <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Services</button>
                                 <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">About</button>
                                 <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Contact Us</button>

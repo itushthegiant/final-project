@@ -3,4 +3,8 @@
 @tailwind utilities;
 
 
-
+.wrapper {
+    display:grid;
+    height:10vh;
+    place-items:center
+  }
