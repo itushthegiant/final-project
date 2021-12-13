@@ -10,7 +10,9 @@ function AuthApp({ setCurrentUser, currentUser }) {
 
     const handleLogOut = async () => {
         try {
-            await baseURL.delete('/logout')
+            await baseURL.delete('/logout',
+            { withCredentials: true }
+            )
             setCurrentUser(null)
             // navigate('/login')
         } catch (err) {

@@ -2,7 +2,7 @@ import React from 'react'
 
 function PropertyCard(props) {
     return (
-        <div className="wrapper  antialiased text-gray-900 w-10">
+        <div className="wrapper  antialiased text-gray-900 w-10 mt-10">
             <div>
                 <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" className="w-full object-cover object-center rounded-lg shadow-md" />
                 <div className="relative px-4 -mt-16  ">

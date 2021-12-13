@@ -4,8 +4,8 @@ class PropertiesController < ApplicationController
 
     # show all properties
     def index
-        render json: Property.all, status: :ok
-        # render json: current_user.propertys, status: :ok
+        # render json: Property.all, status: :ok
+        render json: current_user.propertys, status: :ok
     end 
 
     # create a property

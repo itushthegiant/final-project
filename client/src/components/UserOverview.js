@@ -2,6 +2,7 @@ import React from 'react'
 import PropertyCard from './PropertyCard'
 
 function UserOverview({ currentUser }) {
+    
 
     const renderCard = () => {
         return currentUser.properties.map((property) => <PropertyCard key={property.id} property={property} />)
@@ -13,7 +14,7 @@ function UserOverview({ currentUser }) {
             <div>
                 <h1 className='flex items-center justify-center text-3xl'>Overview</h1>
             </div>
-            <div className="grid grid-rows-1 grid-cols-3 row-span-2 pl-2 py-8">
+            <div className="grid grid-rows-1 row-span-2 p-10">
                 {renderCard()}
             </div>
         </div>
