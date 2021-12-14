@@ -43,7 +43,7 @@ class PropertiesController < ApplicationController
     private
 
     def find_property
-        @property = property.find_by(id: params[:id])
+        @property = Property.find_by(id: params[:id])
     end
 
     def property_params

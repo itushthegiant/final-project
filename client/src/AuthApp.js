@@ -14,7 +14,6 @@ function AuthApp({ setCurrentUser, currentUser }) {
             { withCredentials: true }
             )
             setCurrentUser(null)
-            // navigate('/login')
         } catch (err) {
             console.log(err)
         }

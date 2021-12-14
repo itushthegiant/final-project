@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropertyCard from './PropertyCard'
+import PropertyInfo from './PropertyInfo'
+import baseURL from '../api/baseURL'
 
 function UserOverview({ currentUser }) {
-    
 
-    const renderCard = () => {
-        return currentUser.properties.map((property) => <PropertyCard key={property.id} property={property} />)
+    const [propertyInfo, setPropertyInfo] = useState(null)
+
+    const fetchCardInfo = async (id) => {
+        try {
+            const response = await baseURL.get(`/properties/${id}`,
+                { withCredentials: true }
+            )
+            setPropertyInfo(response.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    const renderCardInfo = () => {
+        if (propertyInfo) {
+            return <PropertyInfo propertyInfo={propertyInfo} />
+        }
+    }
+
+
+
+    const renderCards = () => {
+        return currentUser.properties.map((property) => <PropertyCard fetchCardInfo={fetchCardInfo} id={property.id} key={property.id} property={property} />)
     }
 
 
@@ -15,7 +38,10 @@ function UserOverview({ currentUser }) {
                 <h1 className='flex items-center justify-center text-3xl'>Overview</h1>
             </div>
             <div className="grid grid-rows-1 row-span-2 p-10">
-                {renderCard()}
+                {renderCards()}
+            <div>
+                {renderCardInfo()}
+            </div>
             </div>
         </div>
     )
