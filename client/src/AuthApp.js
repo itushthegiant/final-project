@@ -3,6 +3,7 @@ import UserOverview from './components/UserOverview'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import baseURL from './api/baseURL'
+import AddProperty from './components/AddProperty'
 
 function AuthApp({ setCurrentUser, currentUser }) {
 
@@ -25,6 +26,7 @@ function AuthApp({ setCurrentUser, currentUser }) {
         <div>
             <NavBar handleLogOut={handleLogOut} currentUser={currentUser}  />
             <Routes>
+                <Route exact path='/add-property' element={<AddProperty />} />
                 <Route exact path='/overview' element={<UserOverview currentUser={currentUser} />} />
             </Routes>
         </div>

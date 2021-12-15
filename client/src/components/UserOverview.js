@@ -4,9 +4,10 @@ import PropertyInfo from './PropertyInfo'
 import baseURL from '../api/baseURL'
 
 function UserOverview({ currentUser }) {
-
     const [propertyInfo, setPropertyInfo] = useState(null)
 
+
+////// Fetch the property info when click on property //////
     const fetchCardInfo = async (id) => {
         try {
             const response = await baseURL.get(`/properties/${id}`,
@@ -35,7 +36,7 @@ function UserOverview({ currentUser }) {
     return (
         <div>
             <div>
-                <h1 className='flex items-center justify-center text-3xl'>Overview</h1>
+                <h1 className='user-header flex items-center justify-center text-3xl'>Overview</h1>
             </div>
             <div className="grid grid-rows-1 row-span-2 p-10">
                 {renderCards()}

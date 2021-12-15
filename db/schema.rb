@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_155751) do
+ActiveRecord::Schema.define(version: 2021_12_15_025513) do
 
   create_table "properties", charset: "latin1", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_155751) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "zipcode"
+    t.string "state"
+    t.string "city"
   end
 
   create_table "users", charset: "latin1", force: :cascade do |t|
