@@ -1,67 +1,89 @@
 import React, { useState } from 'react'
+import baseURL from '../api/baseURL'
+import { useNavigate } from 'react-router-dom'
 
 function AddProperty() {
-    const [name, setName] = useState()
-    const [contact, setContact] = useState()
-    const [comments, setComments] = useState()
-    const [address, setAddress] = useState()
+    const [name, setName] = useState('')
+    const [contact, setContact] = useState('')
+    const [comments, setComments] = useState('')
+    const [address, setAddress] = useState('')
+    const [zipcode, setZipcode] = useState(null)
+    const [state, setState] = useState('')
+    const [city, setCity] = useState('')
+    const [errors, setErrors] = useState('')
+    const navigate = useNavigate()
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+                await baseURL.post('/properties',
+                {
+                    name,
+                    contact,
+                    comments,
+                    address,
+                    zipcode,
+                    state,
+                    city
+                }
+            )
+            navigate('/overview')
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
     return (
-        <div>
-            <div className="mt-5 md:mt-0 md:col-span-2">
-                <form>
+        <div className='mt-10'>
+            <h1 className='headers flex items-center justify-center text-3xl mb-10'>Add Property</h1>
+            <div className="mr-24 ml-24 md:mt-0 md:col-span-2">
+                <form onSubmit={handleSubmit}>
                     <div className="shadow overflow-hidden sm:rounded-md">
                         <div className="px-4 py-5 bg-white sm:p-6">
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label className="block text-sm font-medium text-gray-700">First name</label>
-                                    <input type="text" name={name} id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <label className="block text-sm font-medium text-gray-700">Name</label>
+                                    <input type="text" value={name} name='name' placeholder='Property name..' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setName(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label for="last_name" className="block text-sm font-medium text-gray-700">Last name</label>
-                                    <input type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <label for="last_name" className="block text-sm font-medium text-gray-700">Contact Info</label>
+                                    <input type="text" value={contact} name='contact' placeholder='ex. name-212-212-2121..' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setContact(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-4">
-                                    <label for="email_address" className="block text-sm font-medium text-gray-700">Email address</label>
-                                    <input type="text" name="email_address" id="email_address" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <label for="email_address" className="block text-sm font-medium text-gray-700">Add Comment</label>
+                                    <input type="text" value={comments} name='comments' placeholder='ex. no doorman' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setComments(e.target.value)} />
                                 </div>
 
-                                <div className="col-span-6 sm:col-span-3">
-                                    <label for="country" className="block text-sm font-medium text-gray-700">Country / Region</label>
-                                    <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                        <option>United States</option>
-                                        <option>Canada</option>
-                                        <option>Mexico</option>
-                                    </select>
-                                </div>
+
 
                                 <div className="col-span-6">
                                     <label for="street_address" className="block text-sm font-medium text-gray-700">Street address</label>
-                                    <input type="text" name="street_address" id="street_address" autocomplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <input type="text" value={address} name='address' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setAddress(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                                     <label for="city" className="block text-sm font-medium text-gray-700">City</label>
-                                    <input type="text" name="city" id="city" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <input type="text" value={city} name='city' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setCity(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                    <label for="state" className="block text-sm font-medium text-gray-700">State / Province</label>
-                                    <input type="text" name="state" id="state" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <label for="state" className="block text-sm font-medium text-gray-700">State</label>
+                                    <input type="text" value={state} name='state' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setState(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label for="postal_code" className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
-                                    <input type="text" name="postal_code" id="postal_code" autocomplete="postal-code" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <input type="text" value={zipcode} name='zipcode' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setZipcode(e.target.value)} />
                                 </div>
                             </div>
                         </div>
                         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                             <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Save
+                                Submit
                             </button>
                         </div>
                     </div>

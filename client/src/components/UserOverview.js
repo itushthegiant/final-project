@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropertyCard from './PropertyCard'
 import PropertyInfo from './PropertyInfo'
 import baseURL from '../api/baseURL'
@@ -36,7 +36,7 @@ function UserOverview({ currentUser }) {
     return (
         <div>
             <div>
-                <h1 className='user-header flex items-center justify-center text-3xl'>Overview</h1>
+                <h1 className='headers flex items-center justify-center text-3xl'>Overview</h1>
             </div>
             <div className="grid grid-rows-1 row-span-2 p-10">
                 {renderCards()}

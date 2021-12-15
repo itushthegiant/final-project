@@ -5,16 +5,16 @@ class PropertiesController < ApplicationController
     # show all properties
     def index
         # render json: Property.all, status: :ok
-        render json: current_user.propertys, status: :ok
+        render json: current_user.properties, status: :ok
     end 
 
     # create a property
     def create
-        property = Property.create!(property_params)
-        # if current_user
-        #     property = current_user.properties.create!(property_params)
-        #     render json: property, status: :created
-        # end
+        # property = Property.create!(property_params)
+        if current_user
+            property = current_user.properties.create!(property_params)
+            render json: property, status: :created
+        end
         render json: property, status: :created
     end
     
@@ -47,6 +47,6 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-        params.require(:property).permit(:name, :address, :contact, :comments, :user_id)
+        params.require(:property).permit(:id, :name, :address, :state, :city, :zipcode, :contact, :comments, :user_id)
     end
 end
