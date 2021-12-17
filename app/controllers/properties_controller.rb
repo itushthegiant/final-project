@@ -4,18 +4,16 @@ class PropertiesController < ApplicationController
 
     # show all properties
     def index
-        # render json: Property.all, status: :ok
         render json: current_user.properties, status: :ok
     end 
 
     # create a property
     def create
-        # property = Property.create!(property_params)
         if current_user
+            byebug
             property = current_user.properties.create!(property_params)
             render json: property, status: :created
         end
-        render json: property, status: :created
     end
     
 

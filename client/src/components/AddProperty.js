@@ -7,7 +7,7 @@ function AddProperty() {
     const [contact, setContact] = useState('')
     const [comments, setComments] = useState('')
     const [address, setAddress] = useState('')
-    const [zipcode, setZipcode] = useState(null)
+    const [zipcode, setZipcode] = useState('')
     const [state, setState] = useState('')
     const [city, setCity] = useState('')
     const [errors, setErrors] = useState('')
@@ -17,7 +17,7 @@ function AddProperty() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-                await baseURL.post('/properties',
+            await baseURL.post('/properties',
                 {
                     name,
                     contact,
@@ -26,7 +26,8 @@ function AddProperty() {
                     zipcode,
                     state,
                     city
-                }
+                },
+                { withCredentials: true },
             )
             navigate('/overview')
         } catch (err) {
@@ -49,34 +50,34 @@ function AddProperty() {
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label for="last_name" className="block text-sm font-medium text-gray-700">Contact Info</label>
+                                    <label className="block text-sm font-medium text-gray-700">Contact Info</label>
                                     <input type="text" value={contact} name='contact' placeholder='ex. name-212-212-2121..' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setContact(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-4">
-                                    <label for="email_address" className="block text-sm font-medium text-gray-700">Add Comment</label>
+                                    <label className="block text-sm font-medium text-gray-700">Add Comment</label>
                                     <input type="text" value={comments} name='comments' placeholder='ex. no doorman' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setComments(e.target.value)} />
                                 </div>
 
 
 
                                 <div className="col-span-6">
-                                    <label for="street_address" className="block text-sm font-medium text-gray-700">Street address</label>
+                                    <label className="block text-sm font-medium text-gray-700">Street address</label>
                                     <input type="text" value={address} name='address' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setAddress(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                                    <label for="city" className="block text-sm font-medium text-gray-700">City</label>
+                                    <label className="block text-sm font-medium text-gray-700">City</label>
                                     <input type="text" value={city} name='city' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setCity(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                    <label for="state" className="block text-sm font-medium text-gray-700">State</label>
+                                    <label className="block text-sm font-medium text-gray-700">State</label>
                                     <input type="text" value={state} name='state' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setState(e.target.value)} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                    <label for="postal_code" className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
+                                    <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
                                     <input type="text" value={zipcode} name='zipcode' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setZipcode(e.target.value)} />
                                 </div>
                             </div>
