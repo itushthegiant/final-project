@@ -10,7 +10,6 @@ class PropertiesController < ApplicationController
     # create a property
     def create
         if current_user
-            byebug
             property = current_user.properties.create!(property_params)
             render json: property, status: :created
         end

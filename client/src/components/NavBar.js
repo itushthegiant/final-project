@@ -26,14 +26,17 @@ function NavBar(props) {
                                 <div className="hidden md:flex items-center space-x-3 ">
                                     <span>Hello {props.currentUser.username}</span>
                                     <Link to='/login'>
-                                    <button onClick={props.handleLogOut} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Logout</button>
+                                        <button onClick={props.handleLogOut} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Logout</button>
                                     </Link>
                                 </div>
                                 :
                                 <div className="hidden md:flex items-center space-x-3 ">
                                     <span>Hello Guest</span>
                                     <button href="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</button>
-                                    <button href="/signup" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</button>
+                                    <Link to='/signup'>
+                                        <button className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</button>
+                                    </Link>
+                                   
                                 </div>
                         }
 

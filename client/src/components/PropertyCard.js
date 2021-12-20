@@ -8,7 +8,7 @@ function PropertyCard(props) {
 
 
     return (
-        <div onClick={handleClick} className="wrapper  antialiased text-gray-900 w-10 mt-10">
+        <div onClick={handleClick} className="wrapper antialiased text-gray-900 w-10 mt-10">
             <div>
                 <img src="https://source.unsplash.com/random/350x350" alt=" random imge" className="w-full object-cover object-center rounded-lg shadow-md" />
                 <div className="relative px-4 -mt-16  ">

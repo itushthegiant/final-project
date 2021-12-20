@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :jobs
   resources :properties
-  resources :users
+  resources :users, only: [:show, :create]
 
 
   get "/me", to: "users#show"
