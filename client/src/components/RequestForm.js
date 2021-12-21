@@ -1,21 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import baseURL from '../api/baseURL'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function RequestForm() {
     const [type, setType] = useState('')
     const [description, setDescription] = useState('')
     const [contact, setContact] = useState('')
     const navigate = useNavigate()
+    const { id } = useParams()
+
+
+    // useEffect(() => {
+    //     const fetchProperty
+    // },[])
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await baseURL.post('/jobs',
+            await baseURL.post(`/jobs`,
                 {
                     job_type: type,
                     contact,
-                    description
+                    description,
+                    property_id: id
                 },
                 { withCredentials: true },
             )

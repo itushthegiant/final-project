@@ -33,7 +33,7 @@ function AuthApp({ setCurrentUser, currentUser }) {
             <Routes>
                 <Route exact path='/add-property' element={<AddProperty />} />
                 <Route exact path='/overview' element={<UserOverview currentUser={currentUser} />} />
-                <Route exact path='/request-service' element={<RequestForm />} />
+                <Route exact path='/properties/:id/add-job' element={<RequestForm />} />
             </Routes>
         </div>
     )

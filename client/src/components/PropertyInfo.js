@@ -22,7 +22,7 @@ function PropertyInfo({ propertyInfo }) {
                         <p className="text-sm text-grey block mt-6">
                             {propertyInfo.comments}
                         </p>
-                        <Link to='/request-service'><button className='bg-green-500 hover:bg-green-700 text-white text-center py-2 px-4 rounded-full h-20 w-20 inline-flex items-center'>Request service</button></Link>
+                        <Link to={`/properties/${propertyInfo.id}/add-job`}><button className='bg-green-500 hover:bg-green-700 text-white text-center py-2 px-4 rounded-full h-20 w-20 inline-flex items-center'>Request service</button></Link>
                     </div>
                 </div>
             </div>
