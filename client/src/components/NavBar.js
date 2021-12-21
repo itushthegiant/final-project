@@ -10,13 +10,13 @@ function NavBar(props) {
                         <div className="flex space-x-7">
                             <div>
                                 <a href="/login" className="flex items-center py-4 px-2">
-                                    <span className="font-semibold text-gray-500 text-lg">Navigation</span>
+                                    <span className="font-semibold text-gray-500 text-lg">Linked Services</span>
                                 </a>
                             </div>
                             <div className="hidden md:flex items-center space-x-1">
-                                <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Home</button>
+                                <Link to='/overview'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Overview</button></Link>
                                 <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Services</button>
-                                <Link to='/add-property'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Add Property</button></Link>    
+                                <Link to='/add-property'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Add Property</button></Link>
                                 <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Contact Us</button>
                             </div>
                         </div>
@@ -32,11 +32,13 @@ function NavBar(props) {
                                 :
                                 <div className="hidden md:flex items-center space-x-3 ">
                                     <span>Hello Guest</span>
-                                    <button href="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</button>
+                                    <Link to='/login'>
+                                        <button className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</button>
+                                    </Link>
                                     <Link to='/signup'>
                                         <button className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</button>
                                     </Link>
-                                   
+
                                 </div>
                         }
 

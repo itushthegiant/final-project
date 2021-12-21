@@ -7,7 +7,7 @@ function UserOverview({ currentUser }) {
     const [propertyInfo, setPropertyInfo] = useState(null)
 
 
-////// Fetch the property info when click on property //////
+    ////// Fetch the property info when click on property //////
     const fetchCardInfo = async (id) => {
         try {
             const response = await baseURL.get(`/properties/${id}`,
@@ -36,13 +36,13 @@ function UserOverview({ currentUser }) {
     return (
         <div>
             <div>
-                <h1 className='headers flex items-center justify-center text-3xl'>Overview</h1>
+                <h1 className='headers flex items-center justify-center text-3xl mt-5'>Overview</h1>
             </div>
             <div className="grid grid-rows-1 row-span-2 p-10">
                 {renderCards()}
-            <div>
-                {renderCardInfo()}
-            </div>
+                <div>
+                    {renderCardInfo()}
+                </div>
             </div>
         </div>
     )

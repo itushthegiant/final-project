@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import UserOverview from './components/UserOverview'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import baseURL from './api/baseURL'
 import AddProperty from './components/AddProperty'
+import RequestForm from './components/RequestForm'
 
 function AuthApp({ setCurrentUser, currentUser }) {
+
+    const [currentUserProperties, setCurrentUserProperties] = useState([])
 
     // const navigate = useNavigate()
 
@@ -20,6 +23,8 @@ function AuthApp({ setCurrentUser, currentUser }) {
         }
     }
 
+
+
     
 
     return (
@@ -28,6 +33,7 @@ function AuthApp({ setCurrentUser, currentUser }) {
             <Routes>
                 <Route exact path='/add-property' element={<AddProperty />} />
                 <Route exact path='/overview' element={<UserOverview currentUser={currentUser} />} />
+                <Route exact path='/request-service' element={<RequestForm />} />
             </Routes>
         </div>
     )
