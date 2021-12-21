@@ -24,7 +24,7 @@ function NavBar(props) {
                         {
                             props.currentUser ?
                                 <div className="hidden md:flex items-center space-x-3 ">
-                                    <span>Hello {props.currentUser.username}</span>
+                                    <span className='headers text-lg'>Hello {props.currentUser.username}</span>
                                     <Link to='/login'>
                                         <button onClick={props.handleLogOut} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Logout</button>
                                     </Link>
