@@ -5,10 +5,10 @@ import NavBar from './components/NavBar'
 import baseURL from './api/baseURL'
 import AddProperty from './components/AddProperty'
 import RequestForm from './components/RequestForm'
+import EditProperty from './components/EditProperty'
 
 function AuthApp({ setCurrentUser, currentUser }) {
 
-    const [currentUserProperties, setCurrentUserProperties] = useState([])
 
     // const navigate = useNavigate()
 
@@ -34,6 +34,7 @@ function AuthApp({ setCurrentUser, currentUser }) {
                 <Route exact path='/add-property' element={<AddProperty />} />
                 <Route exact path='/overview' element={<UserOverview currentUser={currentUser} />} />
                 <Route exact path='/properties/:id/add-job' element={<RequestForm />} />
+                <Route exact path='/properties/:id/edit-property' element={<EditProperty />} />
             </Routes>
         </div>
     )

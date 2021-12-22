@@ -14,7 +14,7 @@ function PropertyInfo({ propertyInfo }) {
                             {propertyInfo.name}
                         </h4>
                         <p className='leading-normal'>
-                            {propertyInfo.address}
+                            {propertyInfo.address}, {propertyInfo.city}, {propertyInfo.state}, {propertyInfo.zipcode}
                         </p>
                         <p className="text-sm text-grey block mt-6">
                             {propertyInfo.contact}
@@ -22,7 +22,8 @@ function PropertyInfo({ propertyInfo }) {
                         <p className="text-sm text-grey block mt-6">
                             {propertyInfo.comments}
                         </p>
-                        <Link to={`/properties/${propertyInfo.id}/add-job`}><button className='bg-green-500 hover:bg-green-700 text-white text-center py-2 px-4 rounded-full h-20 w-20 inline-flex items-center'>Request service</button></Link>
+                        <Link to={`/properties/${propertyInfo.id}/add-job`}><button className='bg-green-500 hover:bg-green-400 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded'>Request service</button></Link>
+                        <Link to={`/properties/${propertyInfo.id}/edit-property`}><button className='bg-gray-500 hover:bg-gray-400 border-b-4 border-gray-700 hover:border-gray-500 text-white text-center py-2 px-4 rounded'>Edit</button></Link>
                     </div>
                 </div>
             </div>

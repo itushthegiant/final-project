@@ -6,13 +6,24 @@ function RequestForm() {
     const [type, setType] = useState('')
     const [description, setDescription] = useState('')
     const [contact, setContact] = useState('')
+    const [currentProperty, setCurrentProperty] = useState('')
     const navigate = useNavigate()
     const { id } = useParams()
 
 
-    // useEffect(() => {
-    //     const fetchProperty
-    // },[])
+    useEffect(() => {
+        const fetchProperty = async () => {
+            try {
+                const response = await baseURL.get(`/properties/${id}`, { withCredentials: true})
+                if (response.statusText === 'OK') {
+                    setCurrentProperty(response.data)
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        fetchProperty()
+    },[])
 
 
 
@@ -36,7 +47,7 @@ function RequestForm() {
 
     return (
         <div>
-            <h1 className='headers flex items-center justify-center text-3xl mt-5 mb-5'>Request-A-Service</h1>
+            <h1 className='headers flex items-center justify-center text-3xl mt-5 mb-5'>Request-A-Service for {currentProperty.name}</h1>
             <div className=" mr-56 ml-56 md:mt-0 md:col-span-2">
                 <form onSubmit={handleSubmit}>
                     <div className="shadow-lg overflow-hidden sm:rounded-md">

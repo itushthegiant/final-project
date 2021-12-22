@@ -36,7 +36,7 @@ function UserOverview({ currentUser }) {
     return (
         <div>
             <div>
-                <h1 className='headers flex items-center justify-center text-3xl mt-5'>Overview</h1>
+            <h1 className='headers flex items-center justify-center text-3xl mt-5'>Overview</h1>
             </div>
             <div className="grid grid-rows-1 row-span-2 p-10">
                 {renderCards()}
