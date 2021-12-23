@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_022751) do
+ActiveRecord::Schema.define(version: 2021_12_23_015035) do
 
   create_table "jobs", charset: "latin1", force: :cascade do |t|
     t.string "job_type"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_022751) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_admin", default: false
   end
 
 end

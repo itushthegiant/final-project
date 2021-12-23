@@ -15,7 +15,7 @@ function PropertyInfo({ propertyInfo, filterProperties }) {
 
 
     return (
-        <div className="max-w-md mx-auto px-4">
+        <div className="max-w-md mx-auto px-4 absolute inset-x-0 top-48">
             <div className='relative m-0 shadow-lg flex bg-white'>
                 <div className='flex-no-shrink'>
                     <img alt='' className='w-36 h-36 block mx-auto' src='https://source.unsplash.com/WLUHO9A_xik/1600x900' />
