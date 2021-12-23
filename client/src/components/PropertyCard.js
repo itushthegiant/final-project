@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react' 
+import baseURL from '../api/baseURL'
 
 function PropertyCard(props) {
 
     const handleClick = () => {
         props.fetchCardInfo(props.id)
     }
+
 
 
     return (

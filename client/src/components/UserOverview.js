@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropertyCard from './PropertyCard'
 import PropertyInfo from './PropertyInfo'
 import baseURL from '../api/baseURL'
 
-function UserOverview({ currentUser }) {
+function UserOverview() {
     const [propertyInfo, setPropertyInfo] = useState(null)
-
+    const [properties, setProperties] = useState([])
+     
 
     ////// Fetch the property info when click on property //////
     const fetchCardInfo = async (id) => {
@@ -19,17 +20,37 @@ function UserOverview({ currentUser }) {
         }
     }
 
+    useEffect(() => {
+        const fetchProperties = async () => {
+            try {
+                const response = await baseURL.get('/properties', { withCredentials: true })
+                setProperties(response.data)
+            } catch (err) {
+                console.log(err)
+            }
+         }
+         fetchProperties()
+    },[])
+
+
+    const filterProperties = (id) => {
+         const newProperties = properties.filter(property => property.id !== id)
+         setProperties(newProperties)
+    }
+
 
     const renderCardInfo = () => {
         if (propertyInfo) {
-            return <PropertyInfo propertyInfo={propertyInfo} />
+            return <PropertyInfo filterProperties={filterProperties} propertyInfo={propertyInfo} />
         }
     }
 
 
 
     const renderCards = () => {
-        return currentUser.properties.map((property) => <PropertyCard fetchCardInfo={fetchCardInfo} id={property.id} key={property.id} property={property} />)
+        return properties.map((property) => {
+            return  <PropertyCard fetchCardInfo={fetchCardInfo} id={property.id} key={property.id} property={property} />
+        })
     }
 
 
