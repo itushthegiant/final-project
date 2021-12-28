@@ -38,7 +38,7 @@ function AddProperty() {
 
     return (
         <div className='mt-10'>
-            <h1 className='headers flex items-center justify-center text-3xl mb-10'>Add Property</h1>
+            <h1 className='flex items-center justify-center text-3xl mb-10'>Add Property</h1>
             <div className="mr-24 ml-24 md:mt-0 md:col-span-2">
                 <form onSubmit={handleSubmit}>
                     <div className="shadow overflow-hidden sm:rounded-md">

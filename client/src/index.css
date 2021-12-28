@@ -10,6 +10,20 @@
   }
 
 
-  .headers {
+  body {
     font-family: 'Oswald', sans-serif;
+  }
+
+  
+
+  .property-card:hover {
+    transform: translateY(-1rem);
+  }
+
+  .property-card:hover~.property-card {
+    transform: translateX(130px);
+  }
+
+  .property-card:not(:first-child) {
+    margin-left: -130px;
   }
