@@ -22,7 +22,7 @@ function Jobs() {
 
     const renderCards = () => {
         return jobs.map((job) => {
-            return <JobCard job={job}/>
+            return <JobCard key={job.id} job={job}/>
         })
     }
 

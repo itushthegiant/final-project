@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropertyCard from './PropertyCard'
 import baseURL from '../api/baseURL'
+import CheckMark from '../modals/RequestSent'
 
 function UserOverview() {
     const [properties, setProperties] = useState([])

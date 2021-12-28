@@ -10,7 +10,7 @@ function AddProperty() {
     const [zipcode, setZipcode] = useState('')
     const [state, setState] = useState('')
     const [city, setCity] = useState('')
-    const [errors, setErrors] = useState('')
+    // const [errors, setErrors] = useState('')
     const navigate = useNavigate()
 
 

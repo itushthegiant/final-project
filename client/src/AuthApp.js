@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserOverview from './components/UserOverview'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
@@ -9,6 +9,8 @@ import EditProperty from './components/EditProperty'
 import JobsContainer from './components/JobsContainer'
 
 function AuthApp({ setCurrentUser, currentUser }) {
+
+    
 
 
 

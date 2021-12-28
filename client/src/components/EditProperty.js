@@ -11,7 +11,7 @@ function EditProperty() {
     const [zipcode, setZipcode] = useState('')
     const [state, setState] = useState('')
     const [city, setCity] = useState('')
-    const [errors, setErrors] = useState('')
+    // const [errors, setErrors] = useState('')
     const [currentProperty, setCurrentProperty] = useState('')
     const { id } = useParams()
     const navigate = useNavigate()
@@ -21,7 +21,7 @@ function EditProperty() {
     useEffect(() => {
         const fetchProperty = async () => {
             try {
-                const response = await baseURL.get(`/properties/${id}`, { withCredentials: true})
+                const response = await baseURL.get(`/properties/${id}`, { withCredentials: true })
                 if (response.statusText === 'OK') {
                     setCurrentProperty(response.data)
                 }
@@ -30,9 +30,9 @@ function EditProperty() {
             }
         }
         fetchProperty()
-    },[])
+    }, [id])
 
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -102,9 +102,9 @@ function EditProperty() {
                             </div>
                         </div>
                         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                            <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Submit
-                            </button>
+                                <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Submit
+                                </button>
                         </div>
                     </div>
                 </form>
