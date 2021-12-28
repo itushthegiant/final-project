@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import UserOverview from './components/UserOverview'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
@@ -6,11 +6,11 @@ import baseURL from './api/baseURL'
 import AddProperty from './components/AddProperty'
 import RequestForm from './components/RequestForm'
 import EditProperty from './components/EditProperty'
+import JobsContainer from './components/JobsContainer'
 
 function AuthApp({ setCurrentUser, currentUser }) {
 
 
-    // const navigate = useNavigate()
 
     const handleLogOut = async () => {
         try {
@@ -35,6 +35,7 @@ function AuthApp({ setCurrentUser, currentUser }) {
                 <Route exact path='/overview' element={<UserOverview currentUser={currentUser} />} />
                 <Route exact path='/properties/:id/add-job' element={<RequestForm />} />
                 <Route exact path='/properties/:id/edit-property' element={<EditProperty />} />
+                <Route exact path='/jobs' element={<JobsContainer />} />
             </Routes>
         </div>
     )

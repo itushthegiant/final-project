@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import PropertyCard from './PropertyCard'
-import PropertyInfo from './PropertyInfo'
 import baseURL from '../api/baseURL'
 
 function UserOverview() {

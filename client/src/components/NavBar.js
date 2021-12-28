@@ -15,9 +15,8 @@ function NavBar(props) {
                             </div>
                             <div className="hidden md:flex items-center space-x-1">
                                 <Link to='/overview'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Overview</button></Link>
-                                {/* <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Services</button> */}
                                 <Link to='/add-property'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Add Property</button></Link>
-                                {/* <button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Contact Us</button> */}
+                                <Link to='/jobs'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Jobs</button></Link>
                             </div>
                         </div>
 

@@ -4,7 +4,11 @@ class JobsController < ApplicationController
 
     # show all jobs
     def index
-        render json: current_user.jobs, status: :ok
+        if current_user.is_admin == true
+            render json: Job.all, status: :ok
+        else
+            render json: current_user.jobs, status: :ok
+        end
     end 
 
     # create a job

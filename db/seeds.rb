@@ -11,9 +11,4 @@
 
 
 
-# User.create(username: 'etamar', password: "password")
-
-
-Property.create(name: "312 grand st", address: "312 grand st, Brooklyn, NY, 11211", contact: "migeul - 9293876651", user_id: 1, comments: 'no doorman')
-Property.create(name: "312 grand st", address: "312 grand st, Brooklyn, NY, 11211", contact: "migeul - 9293876651", user_id: 1, comments: 'no doorman')
-Property.create(name: "312 grand st", address: "312 grand st, Brooklyn, NY, 11211", contact: "migeul - 9293876651", user_id: 1, comments: 'no doorman')
+User.create(username: 'admin', password: "password", is_admin: true)
