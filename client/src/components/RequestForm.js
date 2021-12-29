@@ -5,10 +5,11 @@ import CheckMark from '../modals/RequestSent'
 
 function RequestForm() {
     const [checkMark, setCheckMark] = useState(false)
-    const [type, setType] = useState('')
+    const [urgent, setUrgent] = useState(null)
     const [description, setDescription] = useState('')
     const [contact, setContact] = useState('')
     const [currentProperty, setCurrentProperty] = useState('')
+    const [image, setImage] = useState([])
     const { id } = useParams()
 
 
@@ -33,7 +34,7 @@ function RequestForm() {
         try {
             await baseURL.post(`/jobs`,
                 {
-                    job_type: type,
+                    urgent,
                     contact,
                     description,
                     property_id: id
@@ -56,19 +57,30 @@ function RequestForm() {
                             <div className="px-4 py-5 bg-white sm:p-6">
                                 <div className="grid grid-rows-3 gap-6">
                                     <div className="row-span-3 sm:col-span-3">
-                                        <label className="block text-sm font-medium text-gray-700">Name</label>
-                                        <input type="text" value={type} name='name' placeholder='Property name..' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setType(e.target.value)} />
-                                    </div>
-
-                                    <div className="row-span-3 sm:col-span-3">
-                                        <label className="block text-sm font-medium text-gray-700">Contact Info</label>
-                                        <input type="text" value={description} name='contact' placeholder='ex. name-212-212-2121..' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setDescription(e.target.value)} />
+                                        <label className="block text-sm font-medium text-gray-700">Issue description</label>
+                                        <input type="text" value={description} name='description' placeholder='' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setDescription(e.target.value)} />
                                     </div>
 
                                     <div className="row-span-3 sm:col-span-4">
-                                        <label className="block text-sm font-medium text-gray-700">Add Comment</label>
-                                        <input type="text" value={contact} name='comments' placeholder='ex. no doorman' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setContact(e.target.value)} />
+                                        <label className="block text-sm font-medium text-gray-700">On site contact</label>
+                                        <input type="text" value={contact} name='contact' placeholder='ex. name 212-212-2121..' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setContact(e.target.value)} />
                                     </div>
+                                    <div className="row-span-3 sm:col-span-4">
+                                        <label className="block text-sm font-medium text-gray-700">How urgent?</label>
+                                        <div className='flex'>
+                                            <p>1</p>
+                                            <input type="radio" value='1' id='level1' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <p>2</p>
+                                            <input type="radio" value='2' id='level2' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <p>3</p>
+                                            <input type="radio" value='3' id='level3' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <p>4</p>
+                                            <input type="radio" value='4' id='level4' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <p>5</p>
+                                            <input type="radio" value='5' id='level5' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                        </div>
+                                    </div>
+                                    <input type='file' onChange={(e) => setImage(console.log(e.target.files[0]))} />
                                 </div>
                             </div>
                             <div className="flex items-center justify-center px-4 py-3 bg-gray-50 text-right sm:px-6">
