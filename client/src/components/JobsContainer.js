@@ -18,6 +18,8 @@ function Jobs() {
         fetchJobs()
     }, [])
 
+    
+
     const renderCards = () => {
         return jobs.map((job) => {
             return <JobCard key={job.id} job={job}/>
