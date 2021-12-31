@@ -6,8 +6,6 @@ function Jobs() {
     const [jobs, setJobs] = useState([])
 
 
-
-
     useEffect(() => {
         const fetchJobs = async () => {
             try {

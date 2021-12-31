@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_235933) do
+ActiveRecord::Schema.define(version: 2021_12_31_002725) do
 
   create_table "active_storage_attachments", charset: "latin1", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_12_28_235933) do
     t.integer "property_id"
     t.integer "urgent"
     t.boolean "approved", default: false
+    t.boolean "is_done", default: false
   end
 
   create_table "properties", charset: "latin1", force: :cascade do |t|

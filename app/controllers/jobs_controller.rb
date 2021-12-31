@@ -31,6 +31,7 @@ class JobsController < ApplicationController
         render json: @job, status: :ok
     end
 
+    # update the job with images
     def update_images
         @job.images.attach(job_params[:images])
         head :no_content
@@ -53,6 +54,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-        params.permit(:approved, :urgent, :description, :contact, :user_id, :property_id, :images)
+        params.permit(:approved, :urgent, :description, :contact, :user_id, :property_id, :images, :is_done)
     end
 end
