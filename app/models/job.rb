@@ -2,5 +2,5 @@ class Job < ApplicationRecord
     belongs_to :user
     belongs_to :property
 
-    has_one_attached :image
+    has_many_attached :images
 end

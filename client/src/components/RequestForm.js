@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import baseURL from '../api/baseURL'
 import { useParams } from 'react-router-dom'
-import CheckMark from '../modals/RequestSent'
+import RequestSent from '../modals/RequestSent'
 
 function RequestForm() {
     const [checkMark, setCheckMark] = useState(false)
@@ -9,7 +9,7 @@ function RequestForm() {
     const [description, setDescription] = useState('')
     const [contact, setContact] = useState('')
     const [currentProperty, setCurrentProperty] = useState('')
-    const [image, setImage] = useState([])
+    const [newJobId,  setNewJobId] = useState(null)
     const { id } = useParams()
 
 
@@ -32,7 +32,7 @@ function RequestForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await baseURL.post(`/jobs`,
+           const response = await baseURL.post(`/jobs`,
                 {
                     urgent,
                     contact,
@@ -42,6 +42,7 @@ function RequestForm() {
                 { withCredentials: true },
             )
             setCheckMark(true)
+            setNewJobId(response.data.id)
         } catch (err) {
             console.log(err)
         }
@@ -80,7 +81,6 @@ function RequestForm() {
                                             <input type="radio" value='5' id='level5' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
                                         </div>
                                     </div>
-                                    <input type='file' onChange={(e) => setImage(console.log(e.target.files[0]))} />
                                 </div>
                             </div>
                             <div className="flex items-center justify-center px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -93,10 +93,10 @@ function RequestForm() {
                 </div>
             </div>
             :
-            <div>
-                <CheckMark />
+             <div>
+                <RequestSent newJobId={newJobId} />
             </div>
-        }
+         } 
 
         </div>
     )

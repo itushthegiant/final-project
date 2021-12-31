@@ -31,6 +31,11 @@ class JobsController < ApplicationController
         render json: @job, status: :ok
     end
 
+    def update_images
+        @job.images.attach(job_params[:images])
+        head :no_content
+    end
+
     # destroy job jobs/:id
     def destroy
         if current_user
@@ -48,6 +53,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-        params.require(:job).permit(:approved, :urgent, :description, :contact, :user_id, :property_id, :image)
+        params.permit(:approved, :urgent, :description, :contact, :user_id, :property_id, :images)
     end
 end
