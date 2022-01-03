@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import baseURL from '../api/baseURL'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
 function EditProperty() {
-    const [name, setName] = useState('')
-    const [contact, setContact] = useState('')
-    const [comments, setComments] = useState('')
-    const [address, setAddress] = useState('')
-    const [zipcode, setZipcode] = useState('')
-    const [state, setState] = useState('')
-    const [city, setCity] = useState('')
-    // const [errors, setErrors] = useState('')
-    const [currentProperty, setCurrentProperty] = useState('')
+    const [currentProperty, setCurrentProperty] = useState({})
     const { id } = useParams()
     const navigate = useNavigate()
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const initialState = {
+        name: currentProperty.name,
+        contact: currentProperty.contact,
+        comments: currentProperty.comments,
+        address: currentProperty.address,
+        zipcode: currentProperty.zipcode,
+        city: currentProperty.city
+    }
+    const { name, contact, comments, address, zipcode, city } = state
 
 
 
@@ -31,7 +33,19 @@ function EditProperty() {
         }
         fetchProperty()
     }, [id])
+ 
 
+    const reducer = (state, { field, value }) => {
+        return {
+            ...state,
+            [field]: value
+        }
+    }
+
+
+    const onChange = e => {
+        dispatch({ field: e.target.name, value: e.target.value })
+    }
 
 
     const handleSubmit = async (e) => {
@@ -44,7 +58,7 @@ function EditProperty() {
                     comments,
                     address,
                     zipcode,
-                    state,
+                    // state,
                     city
                 },
                 { withCredentials: true },
@@ -65,39 +79,69 @@ function EditProperty() {
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Name</label>
-                                    <input type="text" value={name} name='name' placeholder={currentProperty.name} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setName(e.target.value)} />
+                                    <input 
+                                    type="text" 
+                                    value={name || ''} 
+                                    name='name' 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    onChange={onChange} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Contact Info</label>
-                                    <input type="text" value={contact} name='contact' placeholder={currentProperty.contact} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setContact(e.target.value)} />
+                                    <input 
+                                    type="text" 
+                                    value={contact || ''} 
+                                    name='contact' 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    onChange={onChange} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-4">
                                     <label className="block text-sm font-medium text-gray-700">Comments</label>
-                                    <input type="text" value={comments} name='comments' placeholder={currentProperty.comments} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setComments(e.target.value)} />
+                                    <input 
+                                    type="text" 
+                                    value={comments || ''} 
+                                    name='comments' 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    onChange={onChange} />
                                 </div>
 
 
 
                                 <div className="col-span-6">
                                     <label className="block text-sm font-medium text-gray-700">Street address</label>
-                                    <input type="text" value={address} name='address' placeholder={currentProperty.address} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setAddress(e.target.value)} />
+                                    <input 
+                                    type="text" 
+                                    value={address || ''} 
+                                    name='address' 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    onChange={onChange} />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">City</label>
-                                    <input type="text" value={city} name='city' placeholder={currentProperty.city} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setCity(e.target.value)} />
+                                    <input 
+                                    type="text" 
+                                    value={city || ''} 
+                                    name='city'
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    onChange={onChange} />
                                 </div>
-
+{/* 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
                                     <input type="text" value={state} name='state' placeholder={currentProperty.state} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setState(e.target.value)} />
-                                </div>
+                                </div> */}
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
-                                    <input type="text" value={zipcode} name='zipcode' placeholder={currentProperty.zipcode} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setZipcode(e.target.value)} />
+                                    <input 
+                                    type="text" 
+                                    value={zipcode || ''} 
+                                    name='zipcode'
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    onChange={onChange} />
                                 </div>
                             </div>
                         </div>

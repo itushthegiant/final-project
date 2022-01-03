@@ -8,7 +8,8 @@
 
 # User.destroy_all
 # Property.destroy_all
+# Job.destroy_all
 
 
 
-User.create(username: 'admin', password: "password", is_admin: true)
+# User.create(username: 'admin', password: "password", is_admin: true)
