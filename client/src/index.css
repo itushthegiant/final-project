@@ -11,7 +11,10 @@
 
 
   body {
-    font-family: 'Oswald', sans-serif;
+    /* background-color: rgb(15,82,186); */
+    background-image: url(./assets/LINKED-Security-Team-experts.jpeg); 
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .dropdown:hover .dropdown-menu {

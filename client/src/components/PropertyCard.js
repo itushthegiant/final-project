@@ -15,7 +15,7 @@ function PropertyCard({ property, filterProperties }) {
 
 
     return (
-        <div className="property-card mt-10 flex relative flex-col h-96 w-96 min-w-250 p-6 rounded-xl ease-in-out duration-300 bg-white shadow-2xl">
+        <div className="property-card mt-10 flex relative flex-col h-96 w-96 min-w-250 p-6 rounded-xl ease-in-out duration-300 bg-white bg-opacity-95 shadow-2xl hover:shadow-inner">
                 <div className='flex-no-shrink'>
                     <img alt='' className='w-36 h-36 block mx-auto' src='https://source.unsplash.com/WLUHO9A_xik/1600x900' />
                 </div>

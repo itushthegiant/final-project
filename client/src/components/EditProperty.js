@@ -7,7 +7,7 @@ function EditProperty() {
     const [currentProperty, setCurrentProperty] = useState({})
     const { id } = useParams()
     const navigate = useNavigate()
-    const [state, dispatch] = useReducer(reducer, initialState)
+    
     const initialState = {
         name: currentProperty.name,
         contact: currentProperty.contact,
@@ -16,6 +16,16 @@ function EditProperty() {
         zipcode: currentProperty.zipcode,
         city: currentProperty.city
     }
+
+    const reducer = (state, { field, value }) => {
+        return {
+            ...state,
+            [field]: value
+        }
+    }
+
+    const [state, dispatch] = useReducer(reducer, initialState)
+
     const { name, contact, comments, address, zipcode, city } = state
 
 
@@ -35,12 +45,7 @@ function EditProperty() {
     }, [id])
  
 
-    const reducer = (state, { field, value }) => {
-        return {
-            ...state,
-            [field]: value
-        }
-    }
+    
 
 
     const onChange = e => {

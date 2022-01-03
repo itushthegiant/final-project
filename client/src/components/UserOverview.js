@@ -40,7 +40,7 @@ function UserOverview() {
             <div>
                 <h1 className='flex items-center justify-center text-3xl mt-5'>Overview</h1>
             </div>
-            <div className="flex">
+            <div className="flex justify-center">
                 {renderCards()}
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import baseURL from '../api/baseURL'
 import { useNavigate } from "react-router-dom";
+import logo from '../assets/logo.png'
 
 function Login({ setCurrentUser }) {
     const [username, setUsername] = useState('')
@@ -26,22 +27,39 @@ function Login({ setCurrentUser }) {
     }
 
     return (
-        <div className='w-screen h-screen flex justify-center items-center'>
-            <div className='border border-purple-600 w-80 h-80 flex items-center justify-center'>
-                <form onSubmit={handleSubmit}>
-                    <div className='mb-10'>
-                        <label className='mx-5'>Username</label>
-                        <input type='text' value={username} name='username' placeholder='Enter username..' onChange={(e) => setUsername(e.target.value)}></input>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div className="h-screen flex justify-center items-center">
+                    <div className="bg-white bg-opacity-80 shadow-xl p-8 rounded-lg max-w-6xl pb-10">
+                        <div className="justify-center mb-4">
+                            <img  src={logo} className="mx-auto h-20 w-auto" alt='logo' />
+                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                                Welcome, Please login.
+                            </h2>
+                        </div>
+                        <input
+                            name='username'
+                            type="text"
+                            value={username}
+                            className="h-12 rounded w-full border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
+                            placeholder="Username"
+                            onChange={e => setUsername(e.target.value)}
+                        />
+                        <input
+                            name='password'
+                            type="password"
+                            value={password}
+                            className="h-12 mt-3 rounded w-full border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
+                            placeholder="Password"
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                        {/* <div className="flex justify-end items-center mt-2">
+                        <a href="#" className="text-gray-400 hover:text-gray-600">Forgot password?</a>
+                    </div> */}
+                        <button type='submit' className="ease-in-out duration-300 uppercase h-12 mt-3 text-white w-full rounded bg-blue-700 hover:bg-yellow-300 hover:shadow-inner">login</button>
                     </div>
-                    <div className="mb-10">
-                        <label className='mx-5'>Password</label>
-                        <input type='password' value={password} name='password' placeholder='Enter password..' onChange={(e) => setPassword(e.target.value)}></input>
-                    </div>
-                    <div className='flex justify-center'>
-                        <button type='submit'>Login</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     )
 }

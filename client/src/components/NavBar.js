@@ -3,20 +3,32 @@ import { Link } from 'react-router-dom'
 
 function NavBar(props) {
     return (
-        <div>
-            <nav className='rounded-lg'>
+        <div className='bg-blue-700 bg-opacity-90 shadow-2xl mt-2 rounded-2xl ml-4 mr-4'>
+            <nav>
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="flex justify-between">
                         <div className="flex space-x-7">
                             <div>
                                 <a href="/login" className="flex items-center py-4 px-2">
-                                    <span className="font-semibold text-gray-500 text-lg">Linked Services</span>
+                                    <span className="font-semibold text-gray-200 text-lg">Linked Services</span>
                                 </a>
                             </div>
                             <div className="hidden md:flex items-center space-x-1">
-                                <Link to='/overview'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Overview</button></Link>
-                                <Link to='/add-property'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Add Property</button></Link>
-                                <Link to='/jobs'><button className="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500 hover:text-green-500 transition duration-300">Jobs</button></Link>
+                                <Link to='/overview'>
+                                    <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
+                                        Overview
+                                    </button>
+                                </Link>
+                                <Link to='/add-property'>
+                                    <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
+                                        Add Property
+                                    </button>
+                                </Link>
+                                <Link to='/jobs'>
+                                    <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
+                                        Jobs
+                                    </button>
+                                </Link>
                             </div>
                         </div>
 
@@ -25,19 +37,19 @@ function NavBar(props) {
                                 <div className="hidden md:flex items-center space-x-3 ">
                                     <span className='headers text-lg'>Hello {props.currentUser.username}</span>
                                     <Link to='/login'>
-                                        <button onClick={props.handleLogOut} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Logout</button>
+                                        <button onClick={props.handleLogOut} className="py-2 px-2 rounded text-sm text-gray-300 hover:text-black hover:bg-red-400 transition duration-500">
+                                            Logout
+                                        </button>
                                     </Link>
                                 </div>
                                 :
                                 <div className="hidden md:flex items-center space-x-3 ">
-                                    <span>Hello Guest</span>
+                                    <span className="text-gray-300">Hello Guest</span>
                                     <Link to='/login'>
-                                        <button className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</button>
+                                        <button className="py-2 px-2 font-medium text-gray-400 rounded hover:bg-yellow-300 hover:text-black transition duration-300">
+                                            Log In
+                                        </button>
                                     </Link>
-                                    <Link to='/signup'>
-                                        <button className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</button>
-                                    </Link>
-
                                 </div>
                         }
 
