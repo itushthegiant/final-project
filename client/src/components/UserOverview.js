@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropertyCard from './PropertyCard'
 import baseURL from '../api/baseURL'
-import CheckMark from '../modals/RequestSent'
 
 function UserOverview() {
     const [properties, setProperties] = useState([])
@@ -40,7 +39,7 @@ function UserOverview() {
             <div>
                 <h1 className='flex items-center justify-center text-3xl mt-5'>Overview</h1>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center ml-5 mr-5">
                 {renderCards()}
             </div>
         </div>

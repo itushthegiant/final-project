@@ -28,7 +28,7 @@ function Jobs() {
 
 
     return (
-        <div>
+        <div className='flex'>
             {renderCards()}
         </div>
     )

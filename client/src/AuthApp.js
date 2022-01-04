@@ -10,9 +10,6 @@ import JobsContainer from './components/JobsContainer'
 
 function AuthApp({ setCurrentUser, currentUser }) {
 
-    
-
-
 
     const handleLogOut = async () => {
         try {
@@ -25,7 +22,6 @@ function AuthApp({ setCurrentUser, currentUser }) {
         }
     }
 
- 
 
     
 
