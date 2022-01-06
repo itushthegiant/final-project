@@ -57,8 +57,8 @@ class FileUploader extends Component {
                             url: `/jobs/${this.props.newJobId}/upload-images`,
                             method: 'PATCH',
                             withCredentials: true
-                            
-                        }
+                        },
+                        // revert: `/jobs/${this.props.newJobId}/delete-images`
                     }}
                     name="images"
                     oninit={() => this.handleInit()}

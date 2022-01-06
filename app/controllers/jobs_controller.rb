@@ -37,6 +37,13 @@ class JobsController < ApplicationController
         head :no_content
     end
 
+    # delete image from a job
+    # def image_delete
+    #     byebug
+    #     @job.images.find_by(id: [:id]).destroy
+    #     head
+    # end
+
     # destroy job jobs/:id
     def destroy
         if current_user

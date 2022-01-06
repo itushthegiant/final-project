@@ -52,33 +52,86 @@ function RequestForm() {
         <div>{!checkMark ?
             <div>
                 <h1 className='headers flex items-center justify-center text-3xl mt-5 mb-5'>Request-A-Service for {currentProperty.name}</h1>
-                <div className=" mr-56 ml-56 md:mt-0 md:col-span-2">
+                <div className="mr-56 ml-56 opacity-95 shadow-2xl md:mt-0 md:col-span-2">
                     <form onSubmit={handleSubmit}>
                         <div className="shadow-lg overflow-hidden sm:rounded-md">
                             <div className="px-4 py-5 bg-white sm:p-6">
                                 <div className="grid grid-rows-3 gap-6">
                                     <div className="row-span-3 sm:col-span-3">
                                         <label className="block text-sm font-medium text-gray-700">Issue description</label>
-                                        <input type="text" value={description} name='description' placeholder='' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setDescription(e.target.value)} />
+                                        <input 
+                                        type="text" 
+                                        value={description} 
+                                        name='description' 
+                                        placeholder='' 
+                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-7 shadow-md sm:text-sm border-gray-300 rounded-md" 
+                                        onChange={(e) => setDescription(e.target.value)} 
+                                        />
                                     </div>
 
                                     <div className="row-span-3 sm:col-span-4">
                                         <label className="block text-sm font-medium text-gray-700">On site contact</label>
-                                        <input type="text" value={contact} name='contact' placeholder='ex. name 212-212-2121..' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setContact(e.target.value)} />
+                                        <input 
+                                        type="text" 
+                                        value={contact} 
+                                        name='contact' 
+                                        placeholder='ex. name 212-212-2121..' 
+                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md h-7 sm:text-sm border-gray-300 rounded-md" 
+                                        onChange={(e) => setContact(e.target.value)} 
+                                        />
                                     </div>
                                     <div className="row-span-3 sm:col-span-4">
                                         <label className="block text-sm font-medium text-gray-700">How urgent?</label>
                                         <div className='flex'>
                                             <p>1</p>
-                                            <input type="radio" value='1' id='level1' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <input 
+                                            type="radio" 
+                                            value='1' 
+                                            id='level1' 
+                                            name='urgent' 
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" 
+                                            onChange={(e) => setUrgent(e.target.value)} 
+                                            
+                                            />
                                             <p>2</p>
-                                            <input type="radio" value='2' id='level2' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <input 
+                                            type="radio" 
+                                            value='2' 
+                                            id='level2' 
+                                            name='urgent' 
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                            onChange={(e) => setUrgent(e.target.value)} 
+                                            />
+
                                             <p>3</p>
-                                            <input type="radio" value='3' id='level3' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <input 
+                                            type="radio" 
+                                            value='3' 
+                                            id='level3' 
+                                            name='urgent' 
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                            onChange={(e) => setUrgent(e.target.value)} 
+                                            />
+
                                             <p>4</p>
-                                            <input type="radio" value='4' id='level4' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <input 
+                                            type="radio" 
+                                            value='4' 
+                                            id='level4' 
+                                            name='urgent' 
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                            onChange={(e) => setUrgent(e.target.value)} 
+                                            />
+
                                             <p>5</p>
-                                            <input type="radio" value='5' id='level5' name='urgent' className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setUrgent(e.target.value)} />
+                                            <input 
+                                            type="radio" 
+                                            value='5' 
+                                            id='level5' 
+                                            name='urgent' 
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                            onChange={(e) => setUrgent(e.target.value)} 
+                                            />
                                         </div>
                                     </div>
                                 </div>

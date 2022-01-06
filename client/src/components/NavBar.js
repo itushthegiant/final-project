@@ -9,7 +9,7 @@ function NavBar(props) {
                     <div className="flex justify-between">
                         <div className="flex space-x-7">
                             <div>
-                                <a href="/login" className="flex items-center py-4 px-2">
+                                <a href="/overview" className="flex items-center py-4 px-2">
                                     <span className="font-semibold text-gray-200 text-lg">Linked Services</span>
                                 </a>
                             </div>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :properties
   resources :users, only: [:show, :create]
 
-
+  # delete "/jobs/:id/delete-images", to: "jobs#image_delete"
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   delete "/logout", to: "sessions#destroy"
