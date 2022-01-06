@@ -14,19 +14,20 @@ function EditProperty() {
         comments: currentProperty.comments,
         address: currentProperty.address,
         zipcode: currentProperty.zipcode,
-        city: currentProperty.city
+        city: currentProperty.city,
+        state: currentProperty.state
     }
 
-    const reducer = (state, { field, value }) => {
+    const reducer = (currentState, { field, value }) => {
         return {
-            ...state,
+            ...currentState,
             [field]: value
         }
     }
 
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [currentState, dispatch] = useReducer(reducer, initialState)
 
-    const { name, contact, comments, address, zipcode, city } = state
+    const { name, contact, comments, address, zipcode, city, state } = currentState
 
 
 
@@ -63,7 +64,7 @@ function EditProperty() {
                     comments,
                     address,
                     zipcode,
-                    // state,
+                    state,
                     city
                 },
                 { withCredentials: true },
@@ -133,11 +134,17 @@ function EditProperty() {
                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
-{/* 
+
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
-                                    <input type="text" value={state} name='state' placeholder={currentProperty.state} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={(e) => setState(e.target.value)} />
-                                </div> */}
+                                    <input 
+                                    type="text" 
+                                    value={state || ''} 
+                                    name='state' 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    onChange={onChange} 
+                                    />
+                                </div> 
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>

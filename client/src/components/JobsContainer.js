@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import baseURL from '../api/baseURL'
 import JobCard from './JobCard'
+import JobsTable from './JobsTable'
 
 function Jobs() {
     const [jobs, setJobs] = useState([])
@@ -20,16 +21,17 @@ function Jobs() {
 
     
 
-    const renderCards = () => {
-        return jobs.map((job) => {
-            return <JobCard key={job.id} job={job}/>
-        })
-    }
+    // const renderCards = () => {
+    //     return jobs.map((job) => {
+    //         return <JobCard key={job.id} job={job}/>
+    //     })
+    // }
 
 
     return (
         <div className='flex'>
-            {renderCards()}
+            {/* {renderCards()} */}
+            <JobsTable jobs={jobs} />
         </div>
     )
 }
