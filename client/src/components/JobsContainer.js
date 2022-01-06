@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import baseURL from '../api/baseURL'
-import JobCard from './JobCard'
 import JobsTable from './JobsTable'
 
 function Jobs() {
     const [jobs, setJobs] = useState([])
+    const [isClicked, setIsClicked] = useState(false)
 
 
     useEffect(() => {
@@ -21,17 +21,11 @@ function Jobs() {
 
     
 
-    // const renderCards = () => {
-    //     return jobs.map((job) => {
-    //         return <JobCard key={job.id} job={job}/>
-    //     })
-    // }
 
 
     return (
-        <div className='flex'>
-            {/* {renderCards()} */}
-            <JobsTable jobs={jobs} />
+        <div className={isClicked ? 'flex bg-gray-600 bg-opacity-60' : 'flex'}>
+            <JobsTable isClicked={isClicked} setIsClicked={setIsClicked} jobs={jobs} />
         </div>
     )
 }

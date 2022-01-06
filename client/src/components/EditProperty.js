@@ -44,9 +44,6 @@ function EditProperty() {
         }
         fetchProperty()
     }, [id])
- 
-
-    
 
 
     const onChange = e => {
@@ -80,7 +77,7 @@ function EditProperty() {
             <h1 className='flex items-center justify-center text-3xl mb-10'>Edit {currentProperty.name}</h1>
             <div className="mr-24 ml-24 md:mt-0 md:col-span-2">
                 <form onSubmit={handleSubmit}>
-                    <div className="shadow overflow-hidden sm:rounded-md">
+                    <div className="shadow opacity-95 overflow-hidden sm:rounded-md">
                         <div className="px-4 py-5 bg-white sm:p-6">
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
@@ -89,7 +86,7 @@ function EditProperty() {
                                     type="text" 
                                     value={name || ''} 
                                     name='name' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
 
@@ -99,7 +96,7 @@ function EditProperty() {
                                     type="text" 
                                     value={contact || ''} 
                                     name='contact' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
 
@@ -109,7 +106,7 @@ function EditProperty() {
                                     type="text" 
                                     value={comments || ''} 
                                     name='comments' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
 
@@ -121,7 +118,7 @@ function EditProperty() {
                                     type="text" 
                                     value={address || ''} 
                                     name='address' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
 
@@ -131,7 +128,7 @@ function EditProperty() {
                                     type="text" 
                                     value={city || ''} 
                                     name='city'
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
 
@@ -141,7 +138,7 @@ function EditProperty() {
                                     type="text" 
                                     value={state || ''} 
                                     name='state' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} 
                                     />
                                 </div> 
@@ -152,7 +149,7 @@ function EditProperty() {
                                     type="text" 
                                     value={zipcode || ''} 
                                     name='zipcode'
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
                             </div>
