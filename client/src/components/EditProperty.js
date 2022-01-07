@@ -12,7 +12,6 @@ function EditProperty() {
     const initialState = {
         name: currentProperty.name,
         contact: currentProperty.contact,
-        comments: currentProperty.comments,
         address: currentProperty.address,
         zipcode: currentProperty.zipcode,
         city: currentProperty.city,
@@ -28,7 +27,7 @@ function EditProperty() {
 
     const [currentState, dispatch] = useReducer(reducer, initialState)
 
-    const { name, contact, comments, address, zipcode, city, state } = currentState
+    const { name, contact, address, zipcode, city, state } = currentState
     
     const onChange = e => {
         dispatch({ field: e.target.name, value: e.target.value })
@@ -60,7 +59,6 @@ function EditProperty() {
                 {
                         name,
                         contact,
-                        comments,
                         address,
                         zipcode,
                         state,
@@ -102,17 +100,6 @@ function EditProperty() {
                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
                                     onChange={onChange} />
                                 </div>
-
-                                <div className="col-span-6 sm:col-span-4">
-                                    <label className="block text-sm font-medium text-gray-700">Comments</label>
-                                    <input 
-                                    type="text" 
-                                    value={comments || ''} 
-                                    name='comments' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={onChange} />
-                                </div>
-
 
 
                                 <div className="col-span-6">

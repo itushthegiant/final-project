@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import PropertyCard from './PropertyCard'
 import baseURL from '../api/baseURL'
+import DeleteModal from '../modals/DeleteModal'
 
 function UserOverview() {
     const [properties, setProperties] = useState([])
-
-
+    const [currentProperty, setCurrentProperty] = useState('')
+    const [deleteClicked, setDeleteClicked] = useState(false)
 
 
     useEffect(() => {
@@ -29,19 +30,37 @@ function UserOverview() {
 
     const renderCards = () => {
         return properties.map((property) => {
-            return <PropertyCard filterProperties={filterProperties} property={property} id={property.id} key={property.id} />
+            return <PropertyCard 
+            setCurrentProperty={setCurrentProperty} 
+            setDeleteClicked={setDeleteClicked} 
+            property={property} id={property.id} 
+            key={property.id} 
+            />
         })
     }
 
 
     return (
         <div>
-            <div>
-                <h1 className='flex items-center justify-center text-3xl mt-5'>Overview</h1>
-            </div>
-            <div className="flex justify-center ml-5 mr-5">
-                {renderCards()}
-            </div>
+            {!deleteClicked ?
+                <div>
+                    <div>
+                        <h1 className='flex items-center justify-center text-3xl mt-5'>Overview</h1>
+                    </div>
+                    <div className="flex justify-center ml-5 mr-5">
+                        {renderCards()}
+                    </div>
+                </div>
+                :
+                <div>
+                    <DeleteModal 
+                    currentProperty={currentProperty} 
+                    filterProperties={filterProperties} 
+                    setDeleteClicked={setDeleteClicked} 
+                    />
+                </div>
+            
+            }
         </div>
     )
 }

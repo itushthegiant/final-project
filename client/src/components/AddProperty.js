@@ -6,7 +6,6 @@ import { usStates } from '../assets/usStatesArray'
 function AddProperty() {
     const [name, setName] = useState('')
     const [contact, setContact] = useState('')
-    const [comments, setComments] = useState('')
     const [address, setAddress] = useState('')
     const [zipcode, setZipcode] = useState('')
     const [state, setState] = useState('')
@@ -22,7 +21,6 @@ function AddProperty() {
                 {
                     name,
                     contact,
-                    comments,
                     address,
                     zipcode,
                     state,
@@ -38,91 +36,78 @@ function AddProperty() {
 
 
     return (
-        <div className='mt-10'>
-            <h1 className='flex items-center justify-center text-3xl mb-10'>Add Property</h1>
-            <div className="mr-24 ml-24 md:mt-0 md:col-span-2 opacity-95 shadow-2xl">
+        <div className='flex justify-center mt-10'>
+            <div className="w-96 md:mt-0 md:col-span-2 opacity-95">
                 <form onSubmit={handleSubmit}>
-                    <div className="shadow overflow-hidden sm:rounded-md">
+                    <div className="mt-20 shadow-2xl overflow-hidden sm:rounded-md">
                         <div className="px-4 py-5 bg-white sm:p-6">
-                            <div className="grid grid-cols-6 gap-6">
-                                <div className="col-span-6 sm:col-span-3">
+                            <h1 className='mb-7 items-center flex justify-center text-3xl'>Add Property</h1>
+                            <div>
+                                <div className=" sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Name</label>
                                     <input
-                                    maxLength="30"
-                                    type="text" 
-                                    value={name} 
-                                    name='name' 
-                                    placeholder='Property name..' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block h-7 w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={(e) => setName(e.target.value)} 
+                                        maxLength="30"
+                                        type="text"
+                                        value={name}
+                                        name='name'
+                                        placeholder='Property name..'
+                                        className=" w-full h-12 rounded border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
+                                        onChange={(e) => setName(e.target.value)}
                                     />
                                 </div>
 
-                                <div className="col-span-6 sm:col-span-3">
+                                <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Contact Info</label>
-                                    <input 
-                                    type="text" 
-                                    value={contact} 
-                                    name='contact' 
-                                    placeholder='ex. name-212-212-2121..' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block h-7 w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={(e) => setContact(e.target.value)} 
-                                    />
-                                </div>
-
-                                <div className="col-span-6 sm:col-span-4">
-                                    <label className="block text-sm font-medium text-gray-700">Comments</label>
-                                    <input 
-                                    type="text" 
-                                    value={comments} 
-                                    name='comments' 
-                                    placeholder='ex. no doorman' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block h-10 w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={(e) => setComments(e.target.value)} 
+                                    <input
+                                        type="text"
+                                        value={contact}
+                                        name='contact'
+                                        placeholder='ex. name-212-212-2121..'
+                                        className="h-12 w-full rounded border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
+                                        onChange={(e) => setContact(e.target.value)}
                                     />
                                 </div>
 
 
-
-                                <div className="col-span-6">
+                                <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Street address</label>
-                                    <input 
-                                    type="text" 
-                                    value={address} 
-                                    name='address' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 h-7 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={(e) => setAddress(e.target.value)} 
+                                    <input
+                                        type="text"
+                                        value={address}
+                                        name='address'
+                                        className="h-12 rounded w-full border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
+                                        onChange={(e) => setAddress(e.target.value)}
                                     />
                                 </div>
 
-                                <div className="col-span-6 sm:col-span-6 lg:col-span-2">
+                                <div className="mt-5 sm:col-span-6">
                                     <label className="block text-sm font-medium text-gray-700">City</label>
-                                    <input 
-                                    type="text" 
-                                    value={city} 
-                                    name='city' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 h-7 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={(e) => setCity(e.target.value)}
-                                     />
+                                    <input
+                                        type="text"
+                                        value={city}
+                                        name='city'
+                                        className="h-12 rounded w-full border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
+                                        onChange={(e) => setCity(e.target.value)}
+                                    />
                                 </div>
 
-                                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
-                                    <select className='shadow-lg' onChange={e => setState(e.target.value)}>
+                                    <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={e => setState(e.target.value)}>
                                         {usStates.map((state, i) => {
                                             return <option value={state} key={i}>{state}</option>
                                         })}
                                     </select>
                                 </div>
 
-                                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
-                                    <input 
-                                    type="text" 
-                                    value={zipcode} 
-                                    name='zipcode' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-7 shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={(e) => setZipcode(e.target.value)} 
+                                    <input
+                                        type="text"
+                                        value={zipcode}
+                                        name='zipcode'
+                                        className="h-12 rounded w-full border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
+                                        onChange={(e) => setZipcode(e.target.value)}
                                     />
                                 </div>
                             </div>

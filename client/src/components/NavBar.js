@@ -46,7 +46,7 @@ function NavBar(props) {
                                 <div className="hidden md:flex items-center space-x-3 ">
                                     <span className="text-gray-300">Hello Guest</span>
                                     <Link to='/login'>
-                                        <button className="py-2 px-2 font-medium text-gray-400 rounded hover:bg-yellow-300 hover:text-black transition duration-300">
+                                        <button className="animate-pulse py-2 px-2 font-medium text-gray-400 rounded hover:bg-yellow-300 hover:text-black transition duration-300">
                                             Log In
                                         </button>
                                     </Link>

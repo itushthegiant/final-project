@@ -35,7 +35,7 @@ function Login({ setCurrentUser }) {
                     <div className="bg-white bg-opacity-80 shadow-xl p-8 rounded-lg max-w-6xl pb-10">
                         <div className="justify-center mb-4">
                             <img src={logo} className="mx-auto h-20 w-auto" alt='logo' />
-                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                            <h2 className="animate-pulse mt-6 text-center text-3xl font-extrabold text-gray-900">
                                 Welcome, Please login.
                             </h2>
                         </div>
