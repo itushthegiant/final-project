@@ -1,9 +1,10 @@
-import React, { Component, useState } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component } from 'react'
+// import ReactDOM from 'react-dom'
 import { API_URL } from '../api/constants'
 
 // Import React FilePond
-import { FilePond, registerPlugin, setOptions } from "react-filepond";
+import { FilePond } from "react-filepond";
+// import { FilePond, registerPlugin, setOptions } from "react-filepond";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";

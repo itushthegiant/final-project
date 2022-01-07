@@ -7,7 +7,7 @@ import AddProperty from './components/AddProperty'
 import RequestForm from './components/RequestForm'
 import EditProperty from './components/EditProperty'
 import JobsContainer from './components/JobsContainer'
-import Eror404 from './components/Eror404'
+import Eror404 from './components/Error404'
 
 
 function AuthApp({ setCurrentUser, currentUser }) {
@@ -36,7 +36,7 @@ function AuthApp({ setCurrentUser, currentUser }) {
                 <Route exact path='/properties/:id/add-job' element={<RequestForm />} />
                 <Route exact path='/properties/:id/edit-property' element={<EditProperty />} />
                 <Route exact path='/jobs' element={<JobsContainer />} />
-                <Route path='*' element={<Eror404 />} />
+                <Route path='*' element={<Eror404 currentUser={currentUser} />} />
             </Routes>
         </div>
     )

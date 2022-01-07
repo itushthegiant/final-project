@@ -3,8 +3,8 @@ import React from 'react'
 function JobCard({ job }) {
 
     const renderImages = () => {
-        return job.images_urls.map((image) => {
-            return <img className='w-14 h-14' alt='issue image' src={image} />
+        return job.images_urls.map((img) => {
+            return <img className='w-14 h-14' alt='' src={img} />
         })
     }
 

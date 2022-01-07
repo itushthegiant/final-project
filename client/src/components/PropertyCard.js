@@ -30,12 +30,13 @@ function PropertyCard({ property, filterProperties }) {
                         <p className="text-sm text-grey block mt-6">
                             {property.contact}
                         </p>
-                        <p className="text-sm text-grey block mt-6">
-                            {property.comments}
-                        </p>
+                        <div className='mt-5'>
                         <Link to={`/properties/${property.id}/add-job`}><button className='bg-green-500 hover:bg-green-400 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded'>Request service</button></Link>
+                        |
                         <Link to={`/properties/${property.id}/edit-property`}><button className='bg-gray-500 hover:bg-gray-400 border-b-4 border-gray-700 hover:border-gray-500 text-white text-center py-2 px-4 rounded'>Edit</button></Link>
+                        |
                         <button onClick={deleteProperty} className='bg-red-500 hover:bg-red-400 border-b-4 border-red-700 hover:border-red-500 text-white text-center py-2 px-4 rounded'>Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>

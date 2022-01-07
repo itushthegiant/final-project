@@ -24,7 +24,7 @@ function Carousel({ job, setIsClicked }) {
         return job.images_urls.map((img, i) => {
             return <div className={i === currentImg ? 'opacity-100 transition duration-1000 scale-y-105' : 'opacity-0 transition duration-1000'} key={i}>
                 {i === currentImg && (
-                    <img src={img} alt='issue image' className='max-w-5xl h-1/2 rounded-xl mt-14 shadow-2xl' />
+                    <img src={img} alt='issue' className='max-w-5xl h-1/2 rounded-xl mt-14 shadow-2xl' />
                 )}
             </div>
         })

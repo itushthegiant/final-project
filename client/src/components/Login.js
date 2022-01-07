@@ -6,7 +6,9 @@ import logo from '../assets/logo.png'
 function Login({ setCurrentUser }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
     const navigate = useNavigate();
+
 
 
     const handleSubmit = async (e) => {
@@ -22,7 +24,7 @@ function Login({ setCurrentUser }) {
             setCurrentUser(response.data)
             navigate('/')
         } catch (err) {
-            console.log(err)
+            setError(err.response.data.error)
         }
     }
 
@@ -37,8 +39,9 @@ function Login({ setCurrentUser }) {
                                 Welcome, Please login.
                             </h2>
                         </div>
+                        {error ? <div className='mb-1 text-red-600' >* {error}</div> : null}
                         <input
-                            required
+                            // required
                             name='username'
                             type="text"
                             value={username}
@@ -47,7 +50,7 @@ function Login({ setCurrentUser }) {
                             onChange={e => setUsername(e.target.value)}
                         />
                         <input
-                            required
+                            // required
                             name='password'
                             type="password"
                             value={password}

@@ -48,6 +48,7 @@ function AddProperty() {
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Name</label>
                                     <input
+                                    maxLength="30"
                                     type="text" 
                                     value={name} 
                                     name='name' 
