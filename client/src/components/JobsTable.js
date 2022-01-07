@@ -11,6 +11,7 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
             const response = await baseURL.get(`/jobs/${id}`, { withCredentials: true })
             if (response.statusText === 'OK') {
                 setCurrentJob(response.data)
+                setIsClicked(true)
             }
         } catch (err) {
             console.log(err)
@@ -34,6 +35,9 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
                                         </th>
                                         <th className="px-6 py-2 text-xs text-gray-500">
                                             Urgent
+                                        </th>
+                                        <th className="px-6 py-2 text-xs text-gray-500">
+                                            Description
                                         </th>
                                         <th className="px-6 py-2 text-xs text-gray-500">
                                             Address
@@ -64,6 +68,9 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4">
+                                                <div className="text-sm text-gray-500">{job.description}</div>
+                                            </td>
+                                            <td className="px-6 py-4">
                                                 <div className="text-sm text-gray-500">{job.property.address}, {job.property.city}, {job.property.state}, {job.property.zipcode}</div>
                                             </td>
                                             <td className="px-6 py-4 text-sm text-gray-500">
@@ -73,13 +80,10 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
                                                 <div className="text-sm text-gray-500">{job.contact}</div>
                                             </td>
                                             <td className="px-6 py-4">
-                                                {job.approved ? "APPROVED" : "PENDING"}
+                                                {job.approved ? <p className='text-green-300'>APPROVED</p> : <p className='text-yellow-300'>PENDING</p>}
                                             </td>
                                             <td className="px-6 py-4">
-                                                <button onClick={() => {
-                                                    fetchJob(job.id)
-                                                    setIsClicked(true)
-                                                }}
+                                                <button onClick={() => {fetchJob(job.id)}}
                                                     className="px-4 py-1 text-sm text-white bg-red-400 rounded">
                                                     IMAGES
                                                 </button>

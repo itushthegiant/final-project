@@ -20,7 +20,7 @@ function Login({ setCurrentUser }) {
                 { withCredentials: true },
             )
             setCurrentUser(response.data)
-            navigate('/overview')
+            navigate('/')
         } catch (err) {
             console.log(err)
         }

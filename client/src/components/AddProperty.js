@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import baseURL from '../api/baseURL'
 import { useNavigate } from 'react-router-dom'
+import { usStates } from '../assets/usStatesArray'
 
 function AddProperty() {
     const [name, setName] = useState('')
@@ -29,7 +30,7 @@ function AddProperty() {
                 },
                 { withCredentials: true },
             )
-            navigate('/overview')
+            navigate('/')
         } catch (err) {
             console.log(err)
         }
@@ -106,13 +107,11 @@ function AddProperty() {
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
-                                    <input 
-                                    type="text" 
-                                    value={state} 
-                                    name='state' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block h-7 w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={(e) => setState(e.target.value)}
-                                     />
+                                    <select className='shadow-lg' onChange={e => setState(e.target.value)}>
+                                        {usStates.map((state, i) => {
+                                            return <option value={state} key={i}>{state}</option>
+                                        })}
+                                    </select>
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">

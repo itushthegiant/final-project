@@ -34,7 +34,7 @@ function Carousel({ job, setIsClicked }) {
         <div>
 
             <section className='relative h-screen flex'>
-                <MdCancel className=' text-xl ' onClick={() => setIsClicked(false)}/>
+                <MdCancel className='text-xl text-red-600' onClick={() => setIsClicked(false)}/>
                 <MdArrowBackIos className='animate-pulse shadow-2xl absolute mt-10 top-1/4 -left-9 text-5xl text-yellow-200 z-10 cursor-pointer select-none hover:text-black duration-500' onClick={prevSlide} />
                 <MdArrowForwardIos className='animate-pulse shadow-2xl absolute mt-10 top-1/4 -right-14 text-5xl text-yellow-200 z-10 cursor-pointer select-none hover:text-black duration-500' onClick={nextSlide} />
                 {renderImages()}

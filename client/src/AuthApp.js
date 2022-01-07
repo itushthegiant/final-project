@@ -7,7 +7,8 @@ import AddProperty from './components/AddProperty'
 import RequestForm from './components/RequestForm'
 import EditProperty from './components/EditProperty'
 import JobsContainer from './components/JobsContainer'
-import Carousel from './modals/Carousel'
+import Eror404 from './components/Eror404'
+
 
 function AuthApp({ setCurrentUser, currentUser }) {
 
@@ -31,10 +32,11 @@ function AuthApp({ setCurrentUser, currentUser }) {
             <NavBar handleLogOut={handleLogOut} currentUser={currentUser}  />
             <Routes>
                 <Route exact path='/add-property' element={<AddProperty />} />
-                <Route exact path='/overview' element={<UserOverview currentUser={currentUser} />} />
+                <Route exact path='/' element={<UserOverview currentUser={currentUser} />} />
                 <Route exact path='/properties/:id/add-job' element={<RequestForm />} />
                 <Route exact path='/properties/:id/edit-property' element={<EditProperty />} />
                 <Route exact path='/jobs' element={<JobsContainer />} />
+                <Route path='*' element={<Eror404 />} />
             </Routes>
         </div>
     )

@@ -18,7 +18,7 @@ function RequestSent({ newJobId }) {
                 <h1 className='mb-3'>Almost done, please upload photos of the issue(optional)</h1>
                 <FileUploader newJobId={newJobId} />
                 <div className='flex justify-center'>
-                    <Link to='/overview'>
+                    <Link to='/'>
                         <button >Continue</button>
                     </Link>
                 </div>

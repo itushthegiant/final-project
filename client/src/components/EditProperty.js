@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import baseURL from '../api/baseURL'
 import { useNavigate, useParams } from 'react-router-dom'
+import { usStates } from '../assets/usStatesArray'
 
 
 function EditProperty() {
@@ -28,7 +29,10 @@ function EditProperty() {
     const [currentState, dispatch] = useReducer(reducer, initialState)
 
     const { name, contact, comments, address, zipcode, city, state } = currentState
-
+    
+    const onChange = e => {
+        dispatch({ field: e.target.name, value: e.target.value })
+    }
 
 
     useEffect(() => {
@@ -46,9 +50,7 @@ function EditProperty() {
     }, [id])
 
 
-    const onChange = e => {
-        dispatch({ field: e.target.name, value: e.target.value })
-    }
+    
 
 
     const handleSubmit = async (e) => {
@@ -56,17 +58,17 @@ function EditProperty() {
         try {
             await baseURL.patch(`/properties/${id}`,
                 {
-                    name,
-                    contact,
-                    comments,
-                    address,
-                    zipcode,
-                    state,
-                    city
+                        name,
+                        contact,
+                        comments,
+                        address,
+                        zipcode,
+                        state,
+                        city
                 },
                 { withCredentials: true },
             )
-            navigate('/overview')
+            navigate('/')
         } catch (err) {
             console.log(err)
         }
@@ -87,7 +89,8 @@ function EditProperty() {
                                     value={name || ''} 
                                     name='name' 
                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={onChange} />
+                                    onChange={onChange}
+                                    />
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3">
@@ -134,14 +137,12 @@ function EditProperty() {
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
-                                    <input 
-                                    type="text" 
-                                    value={state || ''} 
-                                    name='state' 
-                                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" 
-                                    onChange={onChange} 
-                                    />
-                                </div> 
+                                    <select name='state' className='shadow-lg' onChange={onChange}>
+                                        {usStates.map((state, i) => {
+                                            return <option value={state} key={i}>{state}</option>
+                                        })}
+                                    </select>
+                                </div>
 
                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
