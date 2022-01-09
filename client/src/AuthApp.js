@@ -8,6 +8,7 @@ import RequestForm from './components/RequestForm'
 import EditProperty from './components/EditProperty'
 import JobsContainer from './components/JobsContainer'
 import Eror404 from './components/Error404'
+import Signup from './components/Signup'
 
 
 function AuthApp({ setCurrentUser, currentUser }) {
@@ -16,7 +17,7 @@ function AuthApp({ setCurrentUser, currentUser }) {
     const handleLogOut = async () => {
         try {
             await baseURL.delete('/logout',
-            { withCredentials: true }
+                { withCredentials: true }
             )
             setCurrentUser(null)
         } catch (err) {
@@ -25,12 +26,13 @@ function AuthApp({ setCurrentUser, currentUser }) {
     }
 
 
-    
+
 
     return (
         <div>
-            <NavBar handleLogOut={handleLogOut} currentUser={currentUser}  />
+            <NavBar handleLogOut={handleLogOut} currentUser={currentUser} />
             <Routes>
+                {currentUser.is_admin === true ? <Route exact path='/signup' element={<Signup />} /> : null}
                 <Route exact path='/add-property' element={<AddProperty />} />
                 <Route exact path='/' element={<UserOverview currentUser={currentUser} />} />
                 <Route exact path='/properties/:id/add-job' element={<RequestForm />} />

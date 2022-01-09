@@ -80,13 +80,17 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
                                                 <div className="text-sm text-gray-500">{job.contact}</div>
                                             </td>
                                             <td className="px-6 py-4">
-                                                {job.approved ? <p className='text-green-300'>APPROVED</p> : <p className='text-yellow-300'>PENDING</p>}
+                                                {job.approved ? <p className='text-green-300'>APPROVED</p> : <p className='animate-pulse text-yellow-400'>PENDING</p>}
                                             </td>
                                             <td className="px-6 py-4">
+                                                {job.images_urls.length === 0 ?
+                                                <p className='px-4 py-1 text-md text-gray-500'>No Images</p>
+                                            :
                                                 <button onClick={() => {fetchJob(job.id)}}
-                                                    className="px-4 py-1 text-sm text-white bg-red-400 rounded">
+                                                    className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
                                                     IMAGES
                                                 </button>
+                                            }
                                             </td>
                                         </tr>
                                     ))}

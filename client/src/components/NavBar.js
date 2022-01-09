@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function NavBar(props) {
+function NavBar({ handleLogOut, currentUser }) {
     return (
         <div className='bg-blue-700 bg-opacity-90 shadow-2xl mt-2 rounded-2xl ml-4 mr-4'>
             <nav>
@@ -29,15 +29,24 @@ function NavBar(props) {
                                         Jobs
                                     </button>
                                 </Link>
+                                {currentUser && currentUser.is_admin === true ? 
+                                <Link to='/signup'>
+                                    <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
+                                        Create User
+                                    </button>
+                                </Link>
+                                :
+                                <div></div>
+                                }
                             </div>
                         </div>
 
                         {
-                            props.currentUser ?
+                            currentUser ?
                                 <div className="hidden md:flex items-center space-x-3 ">
-                                    <span className='headers text-lg text-yellow-300'>Hello {props.currentUser.username}</span>
+                                    <span className='headers text-lg text-yellow-300'>Hello {currentUser.username}</span>
                                     <Link to='/login'>
-                                        <button onClick={props.handleLogOut} className="py-2 px-2 rounded text-sm text-gray-300 hover:text-black hover:bg-red-400 transition duration-500">
+                                        <button onClick={handleLogOut} className="py-2 px-2 rounded text-sm text-gray-300 hover:text-black hover:bg-red-400 transition duration-500">
                                             Logout
                                         </button>
                                     </Link>

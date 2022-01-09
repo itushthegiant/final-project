@@ -13,6 +13,7 @@ function RequestForm() {
     const { id } = useParams()
 
 
+    //// fetch current property when the page is rendered 
     useEffect(() => {
         const fetchProperty = async () => {
             try {
@@ -28,7 +29,7 @@ function RequestForm() {
     }, [id])
 
 
-
+    //// onSubmit the form
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -51,6 +52,7 @@ function RequestForm() {
     return (
         <div>
             {!checkMark ?
+            //// render form if checkMark is False ////
                 <div className='flex justify-center mt-10'>
                     <div className=" w-1/4 opacity-95 shadow-2xl md:mt-0 md:col-span-2">
                         <form onSubmit={handleSubmit}>
@@ -58,7 +60,7 @@ function RequestForm() {
                                 <div className="px-4 py-5 bg-white sm:p-6">
                                     <h1 className='mb-7 items-center flex justify-center text-3xl'>Request-A-Service for {currentProperty.name}</h1>
                                     <div className="grid grid-rows-3 gap-6">
-                                        <div className=" sm:col-span-3">
+                                        <div className="sm:col-span-3">
                                             <label className="block text-sm font-medium text-gray-700">Issue description</label>
                                             <input
                                                 type="text"
@@ -85,6 +87,7 @@ function RequestForm() {
                                             <label className="block text-sm font-medium text-gray-700">How urgent?</label>
                                             <div className='mt-1 flex'>
                                                 {['1', '2', '3', '4', '5'].map((num, i) => {
+                                                    //// renders input for each number ////
                                                     return (
                                                         <div key={i} className='w-16'>
                                                             <div>
@@ -101,7 +104,6 @@ function RequestForm() {
                                                                 />
                                                             </div>
                                                         </div>
-
                                                     )
                                                 })}
                                             </div>
@@ -118,7 +120,7 @@ function RequestForm() {
                     </div>
                 </div>
                 :
-                // render photo upload modal when submit //
+                //// render photo upload modal when submit ////
                 <div>
                     <RequestSent newJobId={newJobId} />
                 </div>

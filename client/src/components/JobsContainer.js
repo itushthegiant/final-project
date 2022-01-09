@@ -19,13 +19,21 @@ function Jobs() {
         fetchJobs()
     }, [])
 
-    
+
 
 
 
     return (
-        <div className={isClicked ? 'flex bg-gray-600 bg-opacity-60' : 'flex'}>
-            <JobsTable isClicked={isClicked} setIsClicked={setIsClicked} jobs={jobs} />
+        <div>
+            {jobs.length === 0 ?
+                <div className='border-8 border-none shadow-2xl rounded-3xl flex items-center justify-center mt-32 m-40 bg-blue-300 bg-opacity-70'>
+                    <h1 className='bold m-10 text-3xl'>There are no jobs in your data</h1>
+                </div>
+                :
+                <div className={isClicked ? 'flex bg-gray-600 bg-opacity-60' : 'flex'}>
+                    <JobsTable isClicked={isClicked} setIsClicked={setIsClicked} jobs={jobs} />
+                </div>
+            }
         </div>
     )
 }

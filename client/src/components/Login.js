@@ -39,9 +39,11 @@ function Login({ setCurrentUser }) {
                                 Welcome, Please login.
                             </h2>
                         </div>
+                        
+                        {/*///// render error if error is true /////*/}
                         {error ? <div className='mb-1 text-red-600' >* {error}</div> : null}
+
                         <input
-                            // required
                             name='username'
                             type="text"
                             value={username}
@@ -50,7 +52,6 @@ function Login({ setCurrentUser }) {
                             onChange={e => setUsername(e.target.value)}
                         />
                         <input
-                            // required
                             name='password'
                             type="password"
                             value={password}
@@ -58,9 +59,6 @@ function Login({ setCurrentUser }) {
                             placeholder="Password"
                             onChange={e => setPassword(e.target.value)}
                         />
-                        {/* <div className="flex justify-end items-center mt-2">
-                        <a href="#" className="text-gray-400 hover:text-gray-600">Forgot password?</a>
-                    </div> */}
                         <button type='submit' className="ease-in-out duration-300 uppercase h-12 mt-3 text-white w-full rounded bg-blue-700 hover:bg-yellow-300 hover:shadow-inner">login</button>
                     </div>
                 </div>
