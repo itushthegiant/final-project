@@ -1,24 +1,52 @@
-# README
+# Linked Security
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Property managers can request a service call and check on the status.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+### NPM
 
-* System dependencies
 
-* Configuration
+Use the package manager [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install .
 
-* Database creation
 
-* Database initialization
+```bash
+npm install --prefix client
+```
+```bash
+npm start --prefix client
+```
 
-* How to run the test suite
+### Rails setup
 
-* Services (job queues, cache servers, search engines, etc.)
+* using ruby version 2.7.4
 
-* Deployment instructions
+```bash
+bundle install
+```
+```bash
+rails db:migrate
+```
+```bash
+rails s
+```
 
-* ...
+## URL's
+
+#### FRONTEND
+http://localhost:4000
+#### BACKEND
+http://localhost:3000
+
+
+
+## Usage
+User can login, add properties, request a service call (with images), check status on the service + check the images
+
+
+## Styling
+* The app using [Tailwind css](https://tailwindcss.com/)
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

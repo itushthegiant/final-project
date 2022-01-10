@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import baseURL from '../api/baseURL'
 import { useNavigate } from 'react-router-dom'
 import { usStates } from '../assets/usStatesArray'
+import { renderErrors } from '../assets/RenderErrors'
 
 function AddProperty() {
     const [name, setName] = useState('')
@@ -34,17 +35,6 @@ function AddProperty() {
         }
     }
 
-    const renderErrors = (title) => {
-        return errors.map((err, i) => {
-            const firstWord = err.split(' ')[0]
-            if (firstWord === title) {
-                return <p key={i} className='text-red-600 text-sm'>* {err}</p>
-            } else {
-                return null
-            }
-        })
-    }
-
 
 
     return (
@@ -57,7 +47,7 @@ function AddProperty() {
                             <div>
                                 <div className=" sm:col-span-3">
                                     <label className="text-sm font-medium text-gray-700">Name</label>
-                                    {errors && renderErrors('Name')}
+                                    {errors && renderErrors(errors, 'Name')}
                                     <input
                                         type="text"
                                         value={name}
@@ -70,7 +60,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Contact Info</label>
-                                    {errors &&renderErrors('Contact')}
+                                    {errors &&renderErrors(errors, 'Contact')}
                                     <input
                                         type="text"
                                         value={contact}
@@ -84,7 +74,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Street address</label>
-                                    {errors && renderErrors('Address')}
+                                    {errors && renderErrors(errors, 'Address')}
                                     <input
                                         type="text"
                                         value={address}
@@ -96,7 +86,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-6">
                                     <label className="block text-sm font-medium text-gray-700">City</label>
-                                    {errors && renderErrors('City')}
+                                    {errors && renderErrors(errors, 'City')}
                                     <input
                                         type="text"
                                         value={city}
@@ -108,7 +98,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
-                                    {errors && renderErrors('State')}
+                                    {errors && renderErrors(errors, 'State')}
                                     <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={e => setState(e.target.value)}>
                                     <option value='none' defaultValue={null}>Choose State</option>
                                         {usStates.map((state, i) => {
@@ -119,7 +109,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
-                                    {errors && renderErrors('Zipcode')}
+                                    {errors && renderErrors(errors, 'Zipcode')}
                                     <input
                                         type="text"
                                         value={zipcode}

@@ -1,18 +1,12 @@
 import React from 'react'
 
-function Eror404({ currentUser }) {
+function Eror404() {
     return (
-        <div className='w-screen h-screen fixed flex justify-center items-center bg-gray-400 bg-opacity-75'>
+        <div className='w-screen h-96 fixed flex justify-center text-blue-300 items-center'>
             <div>
-                {currentUser ? 
                 <div>
                     <h1 className='text-9xl'>404 Not-Found</h1>
                 </div>
-                :
-                <div>
-                    <h1 className='text-9xl'>Please Log In...</h1>
-                </div>
-            }
             </div>
         </div>
     )

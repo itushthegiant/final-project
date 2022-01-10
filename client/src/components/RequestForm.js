@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import baseURL from '../api/baseURL'
 import { useParams } from 'react-router-dom'
 import RequestSent from '../modals/RequestSent'
+import { renderErrors } from '../assets/RenderErrors'
 
 function RequestForm() {
     const [checkMark, setCheckMark] = useState(false)
@@ -50,16 +51,7 @@ function RequestForm() {
         }
     }
 
-    const renderErrors = (title) => {
-        return errors.map((err, i) => {
-            const firstWord = err.split(' ')[0]
-            if (firstWord === title) {
-                return <p key={i} className='text-red-600 text-sm'>* {err}</p>
-            } else {
-                return null
-            }
-        })
-    }
+    
 
     return (
         <div>
@@ -74,7 +66,7 @@ function RequestForm() {
                                     <div className="grid grid-rows-3 gap-6">
                                         <div className="sm:col-span-3">
                                             <label className="block text-sm font-medium text-gray-700">Issue description</label>
-                                            {errors && renderErrors('Description')}
+                                            {errors && renderErrors(errors, 'Description')}
                                             <input
                                                 type="text"
                                                 value={description}
@@ -87,7 +79,7 @@ function RequestForm() {
 
                                         <div className=" sm:col-span-4">
                                             <label className="block text-sm font-medium text-gray-700">On site contact</label>
-                                            {errors && renderErrors('Contact')}
+                                            {errors && renderErrors(errors, 'Contact')}
                                             <input
                                                 type="text"
                                                 value={contact}
@@ -99,7 +91,7 @@ function RequestForm() {
                                         </div>
                                         <div className="sm:col-span-4">
                                             <label className="block text-sm font-medium text-gray-700">How urgent?</label>
-                                            {errors && renderErrors('Urgent')}
+                                            {errors && renderErrors(errors, 'Urgent')}
                                             <div className='mt-1 flex'>
                                                 {['1', '2', '3', '4', '5'].map((num, i) => {
                                                     //// renders input for each number ////

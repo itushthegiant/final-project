@@ -18,9 +18,9 @@ function UserOverview() {
                 const response = await baseURL.get('/properties', { withCredentials: true })
                 if (response.statusText === 'OK') {
                     setProperties(response.data)
-                    setIsLoading(false)
-                } else {
                     setIsLoading(true)
+                } else {
+                    setIsLoading(false)
                 }
             } catch (err) {
                 console.log(err)
@@ -51,6 +51,8 @@ function UserOverview() {
     return (
         <div>
             {!isLoading ?
+                <Loading />
+                :
                 !deleteClicked ?
                     (<div>
                         {properties.length === 0 ?
@@ -78,11 +80,7 @@ function UserOverview() {
                             setDeleteClicked={setDeleteClicked}
                         />
                     </div>)
-                    :
-                    <Loading />
             }
-
-
         </div>
     )
 }

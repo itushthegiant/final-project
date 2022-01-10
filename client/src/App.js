@@ -3,6 +3,7 @@ import AuthApp from './AuthApp'
 import UnAuthApp from './UnAuthApp'
 import { BrowserRouter as Router } from 'react-router-dom'
 import baseURL from './api/baseURL'
+import Loading from './modals/Loading'
 
 
 function App() {
@@ -15,11 +16,11 @@ function App() {
     const fetchUser = async () => {
       try {
         const response = await baseURL.get('/me', { withCredentials: true })
-        if (response.statusText === 'OK') {
+        if (response.statusText !== 'OK') {
+          setIsLoading(true)
+        } else {
           setCurrentUser(response.data)
           setIsLoading(false)
-        } else {
-          setIsLoading(true)
         }
       } catch (err) {
         console.log(err)
@@ -28,10 +29,11 @@ function App() {
     fetchUser()
   }, [])
 
-    return (
-      <div>
-        <Router>
-          {currentUser ?
+  return (
+    <div>
+      <Router>
+        {currentUser ?
+          !isLoading ?
             (<AuthApp
               setIsLoading={setIsLoading}
               isLoading={isLoading}
@@ -39,17 +41,22 @@ function App() {
               currentUser={currentUser}
             />)
             :
+            <Loading />
+          :
+          !isLoading ?
             (<UnAuthApp
               isLoading={isLoading}
               setIsLoading={setIsLoading}
               setCurrentUser={setCurrentUser}
               currentUser={currentUser}
             />)
-          }
-        </Router>
+            :
+            <Loading />
+        }
+      </Router>
 
-      </div>
-    );
+    </div>
+  );
 
 }
 
