@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import baseURL from '../api/baseURL'
+import { renderErrors } from '../assets/RenderErrors'
 
 function Signup() {
     const [username, setUsername] = useState('')
@@ -9,7 +10,7 @@ function Signup() {
     const [companyName, setCompanyName] = useState('')
     const [email, setEmail] = useState('')
     const [isAdmin, setIsAdmin] = useState(false)
-    const [error, setError] = useState('')
+    const [errors, setErrors] = useState('')
     const navigate = useNavigate()
 
 
@@ -29,7 +30,7 @@ function Signup() {
             )
             navigate('/')
         } catch (err) {
-            setError(err.response.data.error)
+           setErrors(err.response.data.errors)
         }
     }
 
@@ -45,9 +46,9 @@ function Signup() {
                         </h2>
                     </div>
                     
-                    {/*///// render error if error is true /////*/}
-                    {error && <div className='mb-1 text-red-600' >* {error}</div>}
 
+                    {/*///// render error if error is true /////*/}
+                    {errors && renderErrors(errors, "Username")}
                     <input
                         name='username'
                         type="text"
@@ -56,6 +57,8 @@ function Signup() {
                         placeholder="Username"
                         onChange={e => setUsername(e.target.value)}
                     />
+                    {/*///// render error if error is true /////*/}
+                    {errors && renderErrors(errors, "Email")}
                     <input
                         name='email'
                         type="email"
@@ -73,6 +76,8 @@ function Signup() {
                         placeholder="Company"
                         onChange={e => setCompanyName(e.target.value)}
                     />
+                    {/*///// render error if error is true /////*/}
+                    {errors && renderErrors(errors, "Password")}
                     <input
                         name='password'
                         type="password"
@@ -98,7 +103,7 @@ function Signup() {
                         onChange={() => setIsAdmin(!isAdmin)}
                     />
                     <span className='ml-3'>Is admin?</span>
-                    <button type='submit' className="ease-in-out duration-300 uppercase h-12 mt-3 text-white w-full rounded bg-blue-700 hover:bg-yellow-300 hover:shadow-inner">login</button>
+                    <button type='submit' className="ease-in-out duration-300 uppercase h-12 mt-3 text-white w-full rounded bg-blue-700 hover:bg-yellow-300 hover:shadow-inner">Create User</button>
                 </div>
             </div>
         </form>

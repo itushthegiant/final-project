@@ -83,7 +83,7 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, handleApprove }
                                             </td>
                                             <td className="px-6 py-4">
                                             {currentUser.is_admin === true ? 
-                                                (job.approved === true ?
+                                                (!job.approved === true ?
                                                 <button onClick={() => { handleApprove(job.id) }}
                                                     className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
                                                     APPROVE

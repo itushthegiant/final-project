@@ -43,7 +43,12 @@ function Jobs({ currentUser }) {
                 </div>
                 :
                 <div className={isClicked ? 'flex bg-gray-600 bg-opacity-60' : 'flex'}>
-                    <JobsTable handleApprove={handleApprove} isClicked={isClicked} setIsClicked={setIsClicked} jobs={jobs} currentUser={currentUser} />
+                    <JobsTable 
+                    handleApprove={handleApprove} 
+                    isClicked={isClicked} 
+                    setIsClicked={setIsClicked} 
+                    jobs={jobs} 
+                    currentUser={currentUser} />
                 </div>
             }
         </div>
