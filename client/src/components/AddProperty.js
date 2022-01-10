@@ -110,6 +110,7 @@ function AddProperty() {
                                     <label className="block text-sm font-medium text-gray-700">State</label>
                                     {errors && renderErrors('State')}
                                     <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={e => setState(e.target.value)}>
+                                    <option value='none' defaultValue={null}>Choose State</option>
                                         {usStates.map((state, i) => {
                                             return <option value={state} key={i}>{state}</option>
                                         })}

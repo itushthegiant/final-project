@@ -10,6 +10,7 @@ function RequestForm() {
     const [contact, setContact] = useState('')
     const [currentProperty, setCurrentProperty] = useState('')
     const [newJobId, setNewJobId] = useState(null)
+    const [errors, setErrors] = useState('')
     const { id } = useParams()
 
 
@@ -29,7 +30,7 @@ function RequestForm() {
     }, [id])
 
 
-    //// onSubmit the form
+    //// Submit the form
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -45,8 +46,19 @@ function RequestForm() {
             setCheckMark(true)
             setNewJobId(response.data.id)
         } catch (err) {
-            console.log(err)
+            setErrors(err.response.data.errors)
         }
+    }
+
+    const renderErrors = (title) => {
+        return errors.map((err) => {
+            const firstWord = err.split(' ')[0]
+            if (firstWord === title) {
+                return <p className='text-red-600 text-sm'>* {err}</p>
+            } else {
+                return null
+            }
+        })
     }
 
     return (
@@ -62,6 +74,7 @@ function RequestForm() {
                                     <div className="grid grid-rows-3 gap-6">
                                         <div className="sm:col-span-3">
                                             <label className="block text-sm font-medium text-gray-700">Issue description</label>
+                                            {errors && renderErrors('Description')}
                                             <input
                                                 type="text"
                                                 value={description}
@@ -74,6 +87,7 @@ function RequestForm() {
 
                                         <div className=" sm:col-span-4">
                                             <label className="block text-sm font-medium text-gray-700">On site contact</label>
+                                            {errors && renderErrors('Contact')}
                                             <input
                                                 type="text"
                                                 value={contact}
@@ -85,6 +99,7 @@ function RequestForm() {
                                         </div>
                                         <div className="sm:col-span-4">
                                             <label className="block text-sm font-medium text-gray-700">How urgent?</label>
+                                            {errors && renderErrors('Urgent')}
                                             <div className='mt-1 flex'>
                                                 {['1', '2', '3', '4', '5'].map((num, i) => {
                                                     //// renders input for each number ////

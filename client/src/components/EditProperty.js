@@ -16,7 +16,7 @@ function EditProperty() {
         address: currentProperty.address,
         zipcode: currentProperty.zipcode,
         city: currentProperty.city,
-        state: currentProperty.state
+        state: 'NY'
     }
 
     const reducer = (currentState, { field, value }) => {
@@ -147,8 +147,9 @@ function EditProperty() {
                                 <label className="block text-sm font-medium text-gray-700">State</label>
                                 {errors && renderErrors('State')}
                                 <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={onChange}>
+                                    <option value='none' defaultValue={null}>Choose State</option>
                                     {usStates.map((state, i) => {
-                                        return <option value={state || ''} key={i}>{state}</option>
+                                        return <option value={state} key={i}>{state}</option>
                                     })}
                                 </select>
                             </div>
