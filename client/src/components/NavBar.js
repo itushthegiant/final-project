@@ -29,14 +29,12 @@ function NavBar({ handleLogOut, currentUser }) {
                                         Jobs
                                     </button>
                                 </Link>
-                                {currentUser && currentUser.is_admin === true ? 
+                                {currentUser && currentUser.is_admin === true &&
                                 <Link to='/signup'>
                                     <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
                                         Create User
                                     </button>
                                 </Link>
-                                :
-                                <div></div>
                                 }
                             </div>
                         </div>

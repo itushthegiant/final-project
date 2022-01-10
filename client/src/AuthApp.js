@@ -32,12 +32,12 @@ function AuthApp({ setCurrentUser, currentUser }) {
         <div>
             <NavBar handleLogOut={handleLogOut} currentUser={currentUser} />
             <Routes>
-                {currentUser.is_admin === true ? <Route exact path='/signup' element={<Signup />} /> : null}
+                {currentUser.is_admin === true && <Route exact path='/signup' element={<Signup />} />}
                 <Route exact path='/add-property' element={<AddProperty />} />
                 <Route exact path='/' element={<UserOverview currentUser={currentUser} />} />
                 <Route exact path='/properties/:id/add-job' element={<RequestForm />} />
                 <Route exact path='/properties/:id/edit-property' element={<EditProperty />} />
-                <Route exact path='/jobs' element={<JobsContainer />} />
+                <Route exact path='/jobs' element={<JobsContainer currentUser={currentUser} />} />
                 <Route path='*' element={<Eror404 currentUser={currentUser} />} />
             </Routes>
         </div>

@@ -10,7 +10,7 @@ function AddProperty() {
     const [zipcode, setZipcode] = useState('')
     const [state, setState] = useState('')
     const [city, setCity] = useState('')
-    // const [errors, setErrors] = useState('')
+    const [errors, setErrors] = useState('')
     const navigate = useNavigate()
 
 
@@ -30,9 +30,21 @@ function AddProperty() {
             )
             navigate('/')
         } catch (err) {
-            console.log(err)
+            setErrors(err.response.data.errors)
         }
     }
+
+    const filterErrors = (title) => {
+        return errors.filter((err) => {
+            const firstWord = err.split(' ')[0]
+            if (firstWord === title) {
+                return err
+            } else {
+                return null
+            }
+        })
+    }
+
 
 
     return (
@@ -45,6 +57,7 @@ function AddProperty() {
                             <div>
                                 <div className=" sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Name</label>
+                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Name')}</p>}
                                     <input
                                         maxLength="30"
                                         type="text"
@@ -58,6 +71,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Contact Info</label>
+                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Contact')}</p>}
                                     <input
                                         type="text"
                                         value={contact}
@@ -71,6 +85,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Street address</label>
+                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Address')}</p>}
                                     <input
                                         type="text"
                                         value={address}
@@ -82,6 +97,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-6">
                                     <label className="block text-sm font-medium text-gray-700">City</label>
+                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('City')}</p>}
                                     <input
                                         type="text"
                                         value={city}
@@ -93,6 +109,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
+                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('State')}</p>}
                                     <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={e => setState(e.target.value)}>
                                         {usStates.map((state, i) => {
                                             return <option value={state} key={i}>{state}</option>
@@ -102,6 +119,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
+                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Zipcode')}</p>}
                                     <input
                                         type="text"
                                         value={zipcode}

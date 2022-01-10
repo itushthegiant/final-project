@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import baseURL from '../api/baseURL'
 import JobsTable from './JobsTable'
 
-function Jobs() {
+function Jobs({ currentUser }) {
     const [jobs, setJobs] = useState([])
     const [isClicked, setIsClicked] = useState(false)
+    const [isApproved, setIsApproved] = useState(false)
 
 
     useEffect(() => {
@@ -17,8 +18,19 @@ function Jobs() {
             }
         }
         fetchJobs()
-    }, [])
+    }, [isApproved, setIsApproved])
 
+
+    const handleApprove = async (id) => {
+        try {
+            await baseURL.patch(`/jobs/${id}`, 
+            {approved: isApproved},
+            { withCredentials: true })
+            setIsApproved(!isApproved)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
 
@@ -31,7 +43,7 @@ function Jobs() {
                 </div>
                 :
                 <div className={isClicked ? 'flex bg-gray-600 bg-opacity-60' : 'flex'}>
-                    <JobsTable isClicked={isClicked} setIsClicked={setIsClicked} jobs={jobs} />
+                    <JobsTable handleApprove={handleApprove} isClicked={isClicked} setIsClicked={setIsClicked} jobs={jobs} currentUser={currentUser} />
                 </div>
             }
         </div>

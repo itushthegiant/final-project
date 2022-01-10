@@ -41,7 +41,7 @@ function Login({ setCurrentUser }) {
                         </div>
                         
                         {/*///// render error if error is true /////*/}
-                        {error ? <div className='mb-1 text-red-600' >* {error}</div> : null}
+                        {error && <div className='mb-1 text-red-600' >* {error}</div>}
 
                         <input
                             name='username'

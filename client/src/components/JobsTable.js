@@ -3,7 +3,7 @@ import baseURL from '../api/baseURL'
 import Carousel from '../modals/Carousel'
 
 
-function JobsTable({ jobs, setIsClicked, isClicked }) {
+function JobsTable({ jobs, setIsClicked, isClicked, currentUser, handleApprove }) {
     const [currentJob, setCurrentJob] = useState(null)
 
     const fetchJob = async (id) => {
@@ -17,6 +17,8 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
             console.log(err)
         }
     }
+
+   
 
 
     return (
@@ -52,7 +54,7 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
                                             Status
                                         </th>
                                         <th className="px-6 py-2 text-xs text-gray-500">
-                                            Delete
+                                            Images
                                         </th>
                                     </tr>
                                 </thead>
@@ -80,17 +82,29 @@ function JobsTable({ jobs, setIsClicked, isClicked }) {
                                                 <div className="text-sm text-gray-500">{job.contact}</div>
                                             </td>
                                             <td className="px-6 py-4">
-                                                {job.approved ? <p className='text-green-300'>APPROVED</p> : <p className='animate-pulse text-yellow-400'>PENDING</p>}
+                                            {currentUser.is_admin === true ? 
+                                                (job.approved === true ?
+                                                <button onClick={() => { handleApprove(job.id) }}
+                                                    className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
+                                                    APPROVE
+                                                </button>
+                                                :
+                                                <p className='ml-4 text-green-300'>APPROVED</p>
+                                                )
+                                                :
+                                                job.approved === true ? <p className='text-green-300'>APPROVED</p> : <p className='animate-pulse text-yellow-400'>PENDING</p>
+                                            }
+
                                             </td>
                                             <td className="px-6 py-4">
                                                 {job.images_urls.length === 0 ?
-                                                <p className='px-4 py-1 text-md text-gray-500'>No Images</p>
-                                            :
-                                                <button onClick={() => {fetchJob(job.id)}}
-                                                    className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
-                                                    IMAGES
-                                                </button>
-                                            }
+                                                    <p className='px-4 py-1 text-md text-gray-500'>No Images</p>
+                                                    :
+                                                    <button onClick={() => { fetchJob(job.id) }}
+                                                        className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
+                                                        IMAGES
+                                                    </button>
+                                                }
                                             </td>
                                         </tr>
                                     ))}
