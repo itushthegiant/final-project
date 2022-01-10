@@ -12,9 +12,12 @@
 
   body {
     /* background-color: rgb(15,82,186); */
+    margin: 0;
+    padding: 0;
     background-image: url(./assets/LINKED-Security-Team-experts.jpeg); 
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     font-family: 'Oswald', sans-serif;;
   }
   

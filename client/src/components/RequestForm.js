@@ -51,10 +51,10 @@ function RequestForm() {
     }
 
     const renderErrors = (title) => {
-        return errors.map((err) => {
+        return errors.map((err, i) => {
             const firstWord = err.split(' ')[0]
             if (firstWord === title) {
-                return <p className='text-red-600 text-sm'>* {err}</p>
+                return <p key={i} className='text-red-600 text-sm'>* {err}</p>
             } else {
                 return null
             }

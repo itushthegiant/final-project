@@ -6,8 +6,8 @@ import baseURL from './api/baseURL'
 
 
 function App() {
-
   const [currentUser, setCurrentUser] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
 
 
@@ -17,6 +17,9 @@ function App() {
         const response = await baseURL.get('/me', { withCredentials: true })
         if (response.statusText === 'OK') {
           setCurrentUser(response.data)
+          setIsLoading(false)
+        } else {
+          setIsLoading(true)
         }
       } catch (err) {
         console.log(err)
@@ -25,25 +28,29 @@ function App() {
     fetchUser()
   }, [])
 
+    return (
+      <div>
+        <Router>
+          {currentUser ?
+            (<AuthApp
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+              setCurrentUser={setCurrentUser}
+              currentUser={currentUser}
+            />)
+            :
+            (<UnAuthApp
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              setCurrentUser={setCurrentUser}
+              currentUser={currentUser}
+            />)
+          }
+        </Router>
 
+      </div>
+    );
 
-  return (
-    <div>
-      <Router>
-        {currentUser ?
-          (<AuthApp
-            setCurrentUser={setCurrentUser}
-            currentUser={currentUser}
-          />)
-          :
-          (<UnAuthApp
-            setCurrentUser={setCurrentUser}
-            currentUser={currentUser}
-          />)
-        }
-      </Router>
-    </div>
-  );
 }
 
 export default App;
