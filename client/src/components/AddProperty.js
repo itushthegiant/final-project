@@ -34,11 +34,11 @@ function AddProperty() {
         }
     }
 
-    const filterErrors = (title) => {
-        return errors.filter((err) => {
+    const renderErrors = (title) => {
+        return errors.map((err) => {
             const firstWord = err.split(' ')[0]
             if (firstWord === title) {
-                return err
+                return <p className='text-red-600 text-sm'>* {err}</p>
             } else {
                 return null
             }
@@ -56,10 +56,9 @@ function AddProperty() {
                             <h1 className='mb-7 items-center flex justify-center text-3xl'>Add Property</h1>
                             <div>
                                 <div className=" sm:col-span-3">
-                                    <label className="block text-sm font-medium text-gray-700">Name</label>
-                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Name')}</p>}
+                                    <label className="text-sm font-medium text-gray-700">Name</label>
+                                    {errors && renderErrors('Name')}
                                     <input
-                                        maxLength="30"
                                         type="text"
                                         value={name}
                                         name='name'
@@ -71,7 +70,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Contact Info</label>
-                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Contact')}</p>}
+                                    {errors &&renderErrors('Contact')}
                                     <input
                                         type="text"
                                         value={contact}
@@ -85,7 +84,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">Street address</label>
-                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Address')}</p>}
+                                    {errors && renderErrors('Address')}
                                     <input
                                         type="text"
                                         value={address}
@@ -97,7 +96,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-6">
                                     <label className="block text-sm font-medium text-gray-700">City</label>
-                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('City')}</p>}
+                                    {errors && renderErrors('City')}
                                     <input
                                         type="text"
                                         value={city}
@@ -109,7 +108,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">State</label>
-                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('State')}</p>}
+                                    {errors && renderErrors('State')}
                                     <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={e => setState(e.target.value)}>
                                         {usStates.map((state, i) => {
                                             return <option value={state} key={i}>{state}</option>
@@ -119,7 +118,7 @@ function AddProperty() {
 
                                 <div className="mt-5 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
-                                    {errors && <p className='text-red-600 text-sm'> {filterErrors('Zipcode')}</p>}
+                                    {errors && renderErrors('Zipcode')}
                                     <input
                                         type="text"
                                         value={zipcode}
