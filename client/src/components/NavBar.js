@@ -19,22 +19,26 @@ function NavBar({ handleLogOut, currentUser }) {
                                         Overview
                                     </button>
                                 </Link>
-                                <Link to='/add-property'>
-                                    <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
-                                        Add Property
-                                    </button>
-                                </Link>
+                                {currentUser && !currentUser.is_admin === true ?
+                                    <Link to='/add-property'>
+                                        <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
+                                            Add Property
+                                        </button>
+                                    </Link>
+                                    :
+                                    null
+                                }
                                 <Link to='/jobs'>
                                     <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
                                         Jobs
                                     </button>
                                 </Link>
                                 {currentUser && currentUser.is_admin === true &&
-                                <Link to='/signup'>
-                                    <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
-                                        Create User
-                                    </button>
-                                </Link>
+                                    <Link to='/signup'>
+                                        <button className="py-4 px-2 text-lg rounded text-gray-200 hover:text-black hover:bg-yellow-300 transition duration-400">
+                                            Create User
+                                        </button>
+                                    </Link>
                                 }
                             </div>
                         </div>
@@ -59,32 +63,8 @@ function NavBar({ handleLogOut, currentUser }) {
                                     </Link>
                                 </div>
                         }
-
-                        {/* <div className="md:hidden flex items-center">
-                            <button className="outline-none mobile-menu-button">
-                                <svg className=" w-6 h-6 text-gray-500 hover:text-green-500 "
-                                    x-show="!showMenu"
-                                    fill="none"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path d="M4 6h16M4 12h16M4 18h16"></path>
-                                </svg>
-                            </button>
-                        </div> */}
                     </div>
                 </div>
-                {/* <div className="hidden mobile-menu">
-                    <ul className="">
-                        <li className="active"><button className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</button></li>
-                        <li><button className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</button></li>
-                        <li><button className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</button></li>
-                        <li><button className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</button></li>
-                    </ul>
-                </div> */}
             </nav>
         </div>
     )

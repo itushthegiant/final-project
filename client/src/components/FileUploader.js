@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 import { API_URL } from '../api/constants'
 
 // Import React FilePond
-import { FilePond } from "react-filepond";
-// import { FilePond, registerPlugin, setOptions } from "react-filepond";
+// import { FilePond } from "react-filepond";
+import { FilePond, registerPlugin, setOptions } from "react-filepond";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+
 
 // Import the Image EXIF Orientation and Image Preview plugins
 // Note: These need to be installed separately
@@ -17,6 +19,7 @@ import "filepond/dist/filepond.min.css";
 
 // Register the plugins
 // registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+registerPlugin(FilePondPluginFileValidateType);
 
 // Our app
 class FileUploader extends Component {
@@ -27,7 +30,7 @@ class FileUploader extends Component {
             // Set initial files, type 'local' means this is a file
             // that has already been uploaded to the server (see docs)
             //   files: [
-            //     {
+            //     {`
             //       source: "index.html",
             //       options: {
             //         type: "local"
@@ -37,9 +40,9 @@ class FileUploader extends Component {
         };
     }
 
-    handleInit() {
-        console.log("FilePond instance has initialised", this.pond);
-    }
+    // handleInit() {
+    //     console.log("FilePond instance has initialised", this.pond);
+    // }
 
 
 
@@ -52,6 +55,10 @@ class FileUploader extends Component {
                     allowMultiple={true}
                     allowReorder={true}
                     maxFiles={5}
+                    allowFileTypeValidation={true}
+                    allowRemove={false}
+                    allowRevert={false}
+                    acceptedFileTypes={['image/*']}
                     server={{
                         url: `${API_URL}`,
                         process: {
@@ -62,7 +69,7 @@ class FileUploader extends Component {
                         // revert: `/jobs/${this.props.newJobId}/delete-images`
                     }}
                     name="images"
-                    oninit={() => this.handleInit()}
+                    // oninit={() => this.handleInit()}
                     onupdatefiles={fileItems => {
                         // Set currently active file objects to this.state
                         this.setState({

@@ -3,7 +3,7 @@ import baseURL from '../api/baseURL'
 import Carousel from '../modals/Carousel'
 
 
-function JobsTable({ jobs, setIsClicked, isClicked, currentUser, handleApprove }) {
+function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, isApproved }) {
     const [currentJob, setCurrentJob] = useState(null)
 
     const fetchJob = async (id) => {
@@ -13,6 +13,17 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, handleApprove }
                 setCurrentJob(response.data)
                 setIsClicked(true)
             }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleApprove = async (id) => {
+        try {
+            await baseURL.patch(`/jobs/${id}`, 
+            {approved: isApproved},
+            { withCredentials: true })
+            setIsApproved(!isApproved)
         } catch (err) {
             console.log(err)
         }

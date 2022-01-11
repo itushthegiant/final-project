@@ -5222,6 +5222,11 @@
   "resolved" "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz"
   "version" "1.0.0"
 
+"filepond-plugin-file-validate-type@^1.2.6":
+  "integrity" "sha512-3JFxpb4o5D4BssP/Drjn2GPpejg/QXzU4e3/Pq8IvIJuokHz95b6+RPYstQ+6ITKREYup0N8F/CO/OQfhVkUgg=="
+  "resolved" "https://registry.npmjs.org/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.6.tgz"
+  "version" "1.2.6"
+
 "filepond-plugin-image-exif-orientation@^1.0.11":
   "integrity" "sha512-hLBc12Fk6Zkj3L8mSAn+elugHOqT5rLUbgVXQQIQjMe0FsGjtpoxqeVR6jt4IWHGat2L9sFAgU2TGmd1mqosCg=="
   "resolved" "https://registry.npmjs.org/filepond-plugin-image-exif-orientation/-/filepond-plugin-image-exif-orientation-1.0.11.tgz"
@@ -5232,7 +5237,7 @@
   "resolved" "https://registry.npmjs.org/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.10.tgz"
   "version" "4.6.10"
 
-"filepond@^4.30.3", "filepond@>=3.7.x < 5.x", "filepond@>=3.x <5.x", "filepond@>=4.x <5.x":
+"filepond@^4.30.3", "filepond@>=1.x <5.x", "filepond@>=3.7.x < 5.x", "filepond@>=3.x <5.x", "filepond@>=4.x <5.x":
   "integrity" "sha512-G2b1LEe90Sq2vH0SYDASTB+vVU735NBctzIaFPlZtb14QAgi/AL89WyQ6LhTfqgyrMyuZur2O9yHAmzS2E9ZnA=="
   "resolved" "https://registry.npmjs.org/filepond/-/filepond-4.30.3.tgz"
   "version" "4.30.3"
