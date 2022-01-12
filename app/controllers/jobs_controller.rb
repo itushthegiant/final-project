@@ -37,19 +37,11 @@ class JobsController < ApplicationController
         head :no_content
     end
 
-    # delete image from a job
-    # def image_delete
-    #     byebug
-    #     @job.images.find_by(id: [:id]).destroy
-    #     head
-    # end
+   
 
     # destroy job jobs/:id
     def destroy
-        # if current_user.is_admin == true
-            # user = User.find_by(id: params[:user_id])
             Job.find_by(id: params[:id]).destroy
-        #     # current_user.jobs.find_by(id: params[:id]).destroy
             head :no_content
         # end
     end

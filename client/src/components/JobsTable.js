@@ -23,7 +23,7 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
             await baseURL.patch(`/jobs/${id}`,
                 { approved: isApproved },
                 { withCredentials: true }
-                )
+            )
             setIsApproved(!isApproved)
         } catch (err) {
             console.log(err)
@@ -33,8 +33,7 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
 
     const handleRejection = async (id) => {
         try {
-            await baseURL.delete(`/jobs/${id}`, { withCredentials: true})
-            // setRejectionClicked(true)
+            await baseURL.delete(`/jobs/${id}`, { withCredentials: true })
             filterJobs(id)
         } catch (err) {
             console.log(err)
@@ -55,6 +54,11 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                             <table>
                                 <thead className="bg-gray-50">
                                     <tr>
+                                        {currentUser.is_admin &&
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Client
+                                            </th>
+                                        }
                                         <th className="px-6 py-2 text-xs text-gray-500">
                                             Property
                                         </th>
@@ -79,7 +83,7 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                                         <th className="px-6 py-2 text-xs text-gray-500">
                                             Images
                                         </th>
-                                        {currentUser.is_admin === true &&
+                                        {currentUser.is_admin &&
                                             <th className="px-6 py-2 text-xs text-gray-500">
                                                 Reject/Cancel
                                             </th>
@@ -89,6 +93,11 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                                 <tbody className="bg-white">
                                     {jobs.map((job, i) => (
                                         <tr key={i} className="whitespace-nowrap">
+                                            {currentUser.is_admin && 
+                                            <td className="px-6 py-4 text-sm text-gray-500">
+                                            {job.user.username}
+                                        </td>
+                                            }
                                             <td className="px-6 py-4 text-sm text-gray-500">
                                                 {job.property.name}
                                             </td>
@@ -110,7 +119,7 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                                                 <div className="text-sm text-gray-500">{job.contact}</div>
                                             </td>
                                             <td className="px-6 py-4">
-                                                {currentUser.is_admin === true ?
+                                                {currentUser.is_admin ?
                                                     (!job.approved === true ?
                                                         <button onClick={() => { handleApprove(job.id) }}
                                                             className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
@@ -134,7 +143,7 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                                                     </button>
                                                 }
                                             </td>
-                                            {currentUser.is_admin === true &&
+                                            {currentUser.is_admin &&
                                                 <td>
                                                     {!job.approved ?
                                                         <button onClick={() => { handleRejection(job.id) }}

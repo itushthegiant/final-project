@@ -22,7 +22,7 @@ function Signup() {
                     username,
                     password,
                     password_confirmation: passwordConfirmation,
-                    email,
+                    email_address: email,
                     company_name: companyName,
                     is_admin: isAdmin
                 },
