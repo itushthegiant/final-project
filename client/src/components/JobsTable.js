@@ -3,7 +3,7 @@ import baseURL from '../api/baseURL'
 import Carousel from '../modals/Carousel'
 
 
-function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, isApproved }) {
+function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, isApproved, filterJobs }) {
     const [currentJob, setCurrentJob] = useState(null)
 
     const fetchJob = async (id) => {
@@ -20,16 +20,28 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
 
     const handleApprove = async (id) => {
         try {
-            await baseURL.patch(`/jobs/${id}`, 
-            {approved: isApproved},
-            { withCredentials: true })
+            await baseURL.patch(`/jobs/${id}`,
+                { approved: isApproved },
+                { withCredentials: true }
+                )
             setIsApproved(!isApproved)
         } catch (err) {
             console.log(err)
         }
     }
 
-   
+
+    const handleRejection = async (id) => {
+        try {
+            await baseURL.delete(`/jobs/${id}`, { withCredentials: true})
+            // setRejectionClicked(true)
+            filterJobs(id)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
 
 
     return (
@@ -67,6 +79,11 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                                         <th className="px-6 py-2 text-xs text-gray-500">
                                             Images
                                         </th>
+                                        {currentUser.is_admin === true &&
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Reject/Cancel
+                                            </th>
+                                        }
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white">
@@ -93,18 +110,18 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                                                 <div className="text-sm text-gray-500">{job.contact}</div>
                                             </td>
                                             <td className="px-6 py-4">
-                                            {currentUser.is_admin === true ? 
-                                                (!job.approved === true ?
-                                                <button onClick={() => { handleApprove(job.id) }}
-                                                    className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
-                                                    APPROVE
-                                                </button>
-                                                :
-                                                <p className='ml-4 text-green-300'>APPROVED</p>
-                                                )
-                                                :
-                                                job.approved === true ? <p className='text-green-300'>APPROVED</p> : <p className='animate-pulse text-yellow-400'>PENDING</p>
-                                            }
+                                                {currentUser.is_admin === true ?
+                                                    (!job.approved === true ?
+                                                        <button onClick={() => { handleApprove(job.id) }}
+                                                            className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
+                                                            APPROVE
+                                                        </button>
+                                                        :
+                                                        <p className='ml-4 text-green-300'>APPROVED</p>
+                                                    )
+                                                    :
+                                                    job.approved === true ? <p className='text-green-300'>APPROVED</p> : <p className='animate-pulse text-yellow-400'>PENDING</p>
+                                                }
 
                                             </td>
                                             <td className="px-6 py-4">
@@ -117,6 +134,21 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
                                                     </button>
                                                 }
                                             </td>
+                                            {currentUser.is_admin === true &&
+                                                <td>
+                                                    {!job.approved ?
+                                                        <button onClick={() => { handleRejection(job.id) }}
+                                                            className="px-4 py-1 text-sm ml-2 text-white bg-red-300 rounded hover:bg-red-400 hover:text-white transition duration-300">
+                                                            Reject
+                                                        </button>
+                                                        :
+                                                        <button onClick={() => { handleRejection(job.id) }}
+                                                            className="px-4 py-1 text-sm ml-2 text-white bg-red-600 rounded hover:bg-red-800 hover:text-white transition duration-300">
+                                                            Cancel
+                                                        </button>
+                                                    }
+                                                </td>
+                                            }
                                         </tr>
                                     ))}
                                 </tbody>

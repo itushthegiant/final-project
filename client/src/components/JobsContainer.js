@@ -20,6 +20,10 @@ function Jobs({ currentUser }) {
         fetchJobs()
     }, [isApproved, setIsApproved])
 
+    const filterJobs = (id) => {
+        const newJobs = jobs.filter(job => job.id !== id)
+        setJobs(newJobs)
+    }
 
 
 
@@ -38,7 +42,9 @@ function Jobs({ currentUser }) {
                     isClicked={isClicked} 
                     setIsClicked={setIsClicked} 
                     jobs={jobs} 
-                    currentUser={currentUser} />
+                    currentUser={currentUser} 
+                    filterJobs={filterJobs}
+                    />
                 </div>
             }
         </div>

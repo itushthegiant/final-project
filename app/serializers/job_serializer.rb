@@ -3,6 +3,7 @@ class JobSerializer < ActiveModel::Serializer
   include ImageConcern
 
   attributes :id, :approved, :urgent, :description, :contact, :images_urls, :is_done, :property, :created_at
+  
 
   def images_urls
     object.images.map do |image|

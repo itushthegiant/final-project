@@ -7,6 +7,7 @@ import { renderErrors } from '../assets/RenderErrors'
 
 function EditProperty() {
     const [currentProperty, setCurrentProperty] = useState({})
+    const [state, setState] = useState(currentProperty.state)
     const [errors, setErrors] = useState('')
     const { id } = useParams()
     const navigate = useNavigate()
@@ -17,7 +18,6 @@ function EditProperty() {
         address: currentProperty.address,
         zipcode: currentProperty.zipcode,
         city: currentProperty.city,
-        state: 'NY'
     }
 
     const reducer = (currentState, { field, value }) => {
@@ -29,7 +29,7 @@ function EditProperty() {
 
     const [currentState, dispatch] = useReducer(reducer, initialState)
 
-    const { name, contact, address, zipcode, city, state } = currentState
+    const { name, contact, address, zipcode, city } = currentState
     
     const onChange = e => {
         dispatch({ field: e.target.name, value: e.target.value })
@@ -135,7 +135,7 @@ function EditProperty() {
                             <div className="mt-5 sm:col-span-3">
                                 <label className="block text-sm font-medium text-gray-700">State</label>
                                 {errors && renderErrors(errors, 'State')}
-                                <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={onChange}>
+                                <select className='border-2 border-gray-400 hover:shadow-xl cursor-pointer' onChange={(e) => setState(e.target.value)}>
                                     <option value='none' defaultValue={null}>Choose State</option>
                                     {usStates.map((state, i) => {
                                         return <option value={state} key={i}>{state}</option>

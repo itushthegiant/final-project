@@ -4,7 +4,7 @@ import { API_URL } from '../api/constants'
 
 // Import React FilePond
 // import { FilePond } from "react-filepond";
-import { FilePond, registerPlugin, setOptions } from "react-filepond";
+import { FilePond, registerPlugin } from "react-filepond";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
