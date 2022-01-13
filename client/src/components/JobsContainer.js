@@ -6,19 +6,22 @@ function Jobs({ currentUser }) {
     const [jobs, setJobs] = useState([])
     const [isClicked, setIsClicked] = useState(false)
     const [isApproved, setIsApproved] = useState(true)
+    const [sort, setSort] = useState(false)
 
 
     useEffect(() => {
-        const fetchJobs = async () => {
-            try {
-                const response = await baseURL.get('/jobs', { withCredentials: true })
-                setJobs(response.data)
-            } catch (err) {
-                console.log(err)
+        if (!sort) {
+            const fetchJobs = async () => {
+                try {
+                    const response = await baseURL.get('/jobs', { withCredentials: true })
+                    setJobs(response.data)
+                } catch (err) {
+                    console.log(err)
+                }
             }
+            fetchJobs()
         }
-        fetchJobs()
-    }, [isApproved, setIsApproved])
+    }, [isApproved, setIsApproved, sort])
 
     const filterJobs = (id) => {
         const newJobs = jobs.filter(job => job.id !== id)
@@ -44,6 +47,9 @@ function Jobs({ currentUser }) {
                     jobs={jobs} 
                     currentUser={currentUser} 
                     filterJobs={filterJobs}
+                    setJobs={setJobs}
+                    setSort={setSort}
+                    sort={sort}
                     />
                 </div>
             }

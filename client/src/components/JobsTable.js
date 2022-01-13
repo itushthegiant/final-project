@@ -3,7 +3,7 @@ import baseURL from '../api/baseURL'
 import Carousel from '../modals/Carousel'
 
 
-function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, isApproved, filterJobs }) {
+function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, isApproved, filterJobs, setJobs, setSort, sort }) {
     const [currentJob, setCurrentJob] = useState(null)
 
     const fetchJob = async (id) => {
@@ -40,6 +40,21 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
         }
     }
 
+    const sortByUrgency = (jobs) => {
+        const sortedJobs = jobs.sort((a, b) => {
+            if (a.urgent > b.urgent) {
+                return 1
+            }
+            if (a.urgent < b.urgent) {
+                return-1
+            }
+            return 0
+        })
+        setJobs(sortedJobs)
+        setSort(!sort)
+    }
+
+   
 
 
 
@@ -48,123 +63,127 @@ function JobsTable({ jobs, setIsClicked, isClicked, currentUser, setIsApproved, 
             {isClicked ?
                 <Carousel setIsClicked={setIsClicked} job={currentJob} />
                 :
-                <div className="flex flex-col">
-                    <div className="w-full">
-                        <div className="border-b border-gray-200 shadow">
-                            <table>
-                                <thead className="bg-gray-50">
-                                    <tr>
-                                        {currentUser.is_admin &&
-                                            <th className="px-6 py-2 text-xs text-gray-500">
-                                                Client
-                                            </th>
-                                        }
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Property
-                                        </th>
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Urgent
-                                        </th>
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Description
-                                        </th>
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Address
-                                        </th>
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Created at
-                                        </th>
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Contact
-                                        </th>
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Status
-                                        </th>
-                                        <th className="px-6 py-2 text-xs text-gray-500">
-                                            Images
-                                        </th>
-                                        {currentUser.is_admin &&
-                                            <th className="px-6 py-2 text-xs text-gray-500">
-                                                Reject/Cancel
-                                            </th>
-                                        }
-                                    </tr>
-                                </thead>
-                                <tbody className="bg-white">
-                                    {jobs.map((job, i) => (
-                                        <tr key={i} className="whitespace-nowrap">
-                                            {currentUser.is_admin && 
-                                            <td className="px-6 py-4 text-sm text-gray-500">
-                                            {job.user.username}
-                                        </td>
-                                            }
-                                            <td className="px-6 py-4 text-sm text-gray-500">
-                                                {job.property.name}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="text-sm text-gray-900">
-                                                    {job.urgent}
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="text-sm text-gray-500">{job.description}</div>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="text-sm text-gray-500">{job.property.address}, {job.property.city}, {job.property.state}, {job.property.zipcode}</div>
-                                            </td>
-                                            <td className="px-6 py-4 text-sm text-gray-500">
-                                                {job.created_at.slice(0, 10)}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="text-sm text-gray-500">{job.contact}</div>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {currentUser.is_admin ?
-                                                    (!job.approved === true ?
-                                                        <button onClick={() => { handleApprove(job.id) }}
-                                                            className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
-                                                            APPROVE
-                                                        </button>
-                                                        :
-                                                        <p className='ml-4 text-green-300'>APPROVED</p>
-                                                    )
-                                                    :
-                                                    job.approved === true ? <p className='text-green-300'>APPROVED</p> : <p className='animate-pulse text-yellow-400'>PENDING</p>
-                                                }
-
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {job.images_urls.length === 0 ?
-                                                    <p className='px-4 py-1 text-md text-gray-500'>No Images</p>
-                                                    :
-                                                    <button onClick={() => { fetchJob(job.id) }}
-                                                        className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
-                                                        IMAGES
-                                                    </button>
-                                                }
-                                            </td>
+                <div>
+                    <button className='px-4 py-1 text-sm ml-1 mb-1 text-black bg-gray-400 rounded-3xl hover:bg-blue-200 hover:text-white transition duration-300' onClick={() => sortByUrgency(jobs) }>{!sort ? 'Sort by urgency' : 'Undo'}</button>
+                    <div className="flex flex-col">
+                        <div className="w-full">
+                            <div className="border-b border-gray-200 shadow">
+                                <table>
+                                    <thead className="bg-gray-50">
+                                        <tr>
                                             {currentUser.is_admin &&
-                                                <td>
-                                                    {!job.approved ?
-                                                        <button onClick={() => { handleRejection(job.id) }}
-                                                            className="px-4 py-1 text-sm ml-2 text-white bg-red-300 rounded hover:bg-red-400 hover:text-white transition duration-300">
-                                                            Reject
-                                                        </button>
+                                                <th className="px-6 py-2 text-xs text-gray-500">
+                                                    Client
+                                                </th>
+                                            }
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Property
+                                            </th>
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Urgent
+                                            </th>
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Description
+                                            </th>
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Address
+                                            </th>
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Created at
+                                            </th>
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Contact
+                                            </th>
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Status
+                                            </th>
+                                            <th className="px-6 py-2 text-xs text-gray-500">
+                                                Images
+                                            </th>
+                                            {currentUser.is_admin &&
+                                                <th className="px-6 py-2 text-xs text-gray-500">
+                                                    Reject/Cancel
+                                                </th>
+                                            }
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white">
+                                        {jobs.map((job, i) => (
+                                            <tr key={i} className="whitespace-nowrap">
+                                                {currentUser.is_admin &&
+                                                    <td className="px-6 py-4 text-sm text-gray-500">
+                                                        {job.user.username}
+                                                    </td>
+                                                }
+                                                <td className="px-6 py-4 text-sm text-gray-500">
+                                                    {job.property.name}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    <div className="text-sm text-gray-900">
+                                                        {job.urgent}
+                                                    </div>
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    <div className="text-sm text-gray-500">{job.description}</div>
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    <div className="text-sm text-gray-500">{job.property.address}, {job.property.city}, {job.property.state}, {job.property.zipcode}</div>
+                                                </td>
+                                                <td className="px-6 py-4 text-sm text-gray-500">
+                                                    {job.created_at.slice(0, 10)}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    <div className="text-sm text-gray-500">{job.contact}</div>
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {currentUser.is_admin ?
+                                                        (!job.approved === true ?
+                                                            <button onClick={() => { handleApprove(job.id) }}
+                                                                className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
+                                                                APPROVE
+                                                            </button>
+                                                            :
+                                                            <p className='ml-4 text-green-300'>APPROVED</p>
+                                                        )
                                                         :
-                                                        <button onClick={() => { handleRejection(job.id) }}
-                                                            className="px-4 py-1 text-sm ml-2 text-white bg-red-600 rounded hover:bg-red-800 hover:text-white transition duration-300">
-                                                            Cancel
+                                                        job.approved === true ? <p className='text-green-300'>APPROVED</p> : <p className='animate-pulse text-yellow-400'>PENDING</p>
+                                                    }
+
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {job.images_urls.length === 0 ?
+                                                        <p className='px-4 py-1 text-md text-gray-500'>No Images</p>
+                                                        :
+                                                        <button onClick={() => { fetchJob(job.id) }}
+                                                            className="px-4 py-1 text-sm ml-2 text-black bg-yellow-400 rounded hover:bg-yellow-200 hover:text-white transition duration-300">
+                                                            IMAGES
                                                         </button>
                                                     }
                                                 </td>
-                                            }
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                                {currentUser.is_admin &&
+                                                    <td>
+                                                        {!job.approved ?
+                                                            <button onClick={() => { handleRejection(job.id) }}
+                                                                className="px-4 py-1 text-sm ml-2 text-white bg-red-300 rounded hover:bg-red-400 hover:text-white transition duration-300">
+                                                                Reject
+                                                            </button>
+                                                            :
+                                                            <button onClick={() => { handleRejection(job.id) }}
+                                                                className="px-4 py-1 text-sm ml-2 text-white bg-red-600 rounded hover:bg-red-800 hover:text-white transition duration-300">
+                                                                Cancel
+                                                            </button>
+                                                        }
+                                                    </td>
+                                                }
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             }
         </div>
 
