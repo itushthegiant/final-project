@@ -67,7 +67,7 @@ function Signup() {
                         placeholder="example@gmail.com"
                         onChange={e => setEmail(e.target.value)}
                     />
-                    <div className='mt-1 text-sm text-gray-500'>Optional</div>
+                    {errors && renderErrors(errors, "Company")}
                     <input
                         name='companyName'
                         type="text"
@@ -100,7 +100,7 @@ function Signup() {
                         value={isAdmin}
                         className="w-4 h-4 mt-3 border px-3 focus:text-black focus:border-blue-100 hover:shadow-xl ease-in-out duration-300"
                         placeholder="Confirm password"
-                        onChange={() => setIsAdmin(!isAdmin)}
+                        onChange={(e) => setIsAdmin(!isAdmin)}
                     />
                     <span className='ml-3'>Is admin?</span>
                     <button type='submit' className="ease-in-out duration-300 uppercase h-12 mt-3 text-white w-full rounded bg-blue-700 hover:bg-yellow-300 hover:shadow-inner">Create User</button>

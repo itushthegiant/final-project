@@ -75,7 +75,7 @@ function JobsTable(props) {
                         {/* admin data */}
                         {props.currentUser.is_admin && (
                           <td className="px-6 py-4 text-sm text-gray-500">
-                            {job.user.username}
+                            {job.user.company_name}
                           </td>
                         )}
                         <td className="px-6 py-4 text-sm text-gray-500">
@@ -151,7 +151,7 @@ function JobsTable(props) {
                                 onClick={() => {
                                   props.handleRejection(job.id);
                                 }}
-                                className="px-4 py-1 text-sm ml-2 text-white bg-red-300 rounded hover:bg-red-400 hover:text-white transition duration-300"
+                                className="px-4 py-1 text-sm ml-2 text-white bg-red-400 rounded hover:bg-red-600 hover:text-white transition duration-300"
                               >
                                 Reject
                               </button>
@@ -160,7 +160,7 @@ function JobsTable(props) {
                                 onClick={() => {
                                   props.handleRejection(job.id);
                                 }}
-                                className="px-4 py-1 text-sm ml-2 text-white bg-red-600 rounded hover:bg-red-800 hover:text-white transition duration-300"
+                                className="px-4 py-1 text-sm ml-5 text-white bg-red-600 rounded hover:bg-red-800 hover:text-white transition duration-300"
                               >
                                 Cancel
                               </button>
@@ -175,14 +175,14 @@ function JobsTable(props) {
                                 onClick={() => {
                                   props.handleDone(job.id);
                                 }}
-                                className="px-4 py-1 text-sm ml-2 text-white bg-red-600 rounded hover:bg-red-400 hover:text-white transition duration-300"
+                                className="px-4 py-1 text-sm ml-7 text-white bg-green-500 rounded hover:bg-green-300 hover:text-white transition duration-300"
                               >
                                 Done
                               </button>
                             ) : (
                               <button
                                 disabled
-                                className="px-4 py-1 text-sm ml-2 text-white bg-red-300 rounded"
+                                className="px-4 py-1 text-sm ml-2 text-white bg-green-100 rounded"
                               >
                                 Done
                               </button>

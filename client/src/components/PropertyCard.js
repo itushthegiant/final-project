@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function PropertyCard({ property, setCurrentProperty, setDeleteClicked }) {
+function PropertyCard({ property, setCurrentProperty, setDeleteClicked, currentUser }) {
 
 
 
     return (
         <div className="property-card mt-10 flex relative flex-col h-3/5 w-96 p-6 text-center rounded-xl ease-in-out duration-300 bg-white bg-opacity-95 shadow-2xl hover:shadow-inner">
+            {currentUser && currentUser.is_admin && <h5>Client: {property.user.company_name}</h5>}
             <div className='flex-no-shrink'>
                 <img alt='' className='w-36 h-36 block rounded-full mx-auto' src='https://www.creativefabrica.com/wp-content/uploads/2020/02/10/Building-Logo-Graphics-1-50.jpg' />
             </div>

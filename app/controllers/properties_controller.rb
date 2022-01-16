@@ -33,10 +33,8 @@ class PropertiesController < ApplicationController
 
     # destroy property properties/:id
     def destroy
-        if current_user
-            current_user.properties.find_by(id: params[:id]).destroy
-            head :no_content
-        end
+        Property.find_by(id: params[:id]).destroy
+        head :no_content
     end
 
 

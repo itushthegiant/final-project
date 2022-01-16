@@ -78,7 +78,7 @@ function Jobs({ currentUser }) {
                 `/jobs/${id}`,
                 { is_done: true },
                 { withCredentials: true })
-                setIsDone(true);
+            setIsDone(true);
         } catch (err) {
             console.log(err)
         }

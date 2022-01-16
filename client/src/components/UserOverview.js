@@ -5,7 +5,7 @@ import DeleteModal from '../modals/DeleteModal'
 import { Link } from 'react-router-dom'
 import Loading from '../modals/Loading'
 
-function UserOverview() {
+function UserOverview({ currentUser }) {
     const [properties, setProperties] = useState([])
     const [currentProperty, setCurrentProperty] = useState('')
     const [deleteClicked, setDeleteClicked] = useState(false)
@@ -39,6 +39,7 @@ function UserOverview() {
     const renderCards = () => {
         return properties.map((property) => {
             return <PropertyCard
+                currentUser={currentUser}
                 setCurrentProperty={setCurrentProperty}
                 setDeleteClicked={setDeleteClicked}
                 property={property} id={property.id}
