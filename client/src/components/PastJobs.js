@@ -14,7 +14,7 @@ const PastJobs = (props) => {
             <div className="w-full">
               <div className="border-b border-gray-200 shadow">
                 <table>
-                  <thead className="bg-gray-50">
+                  <thead className="bg-gray-200">
                     <tr>
                       {/* admin header */}
                       {props.currentUser.is_admin && (
@@ -43,7 +43,7 @@ const PastJobs = (props) => {
                     </tr>
                   </thead>
                   {/* table body */}
-                  <tbody className="bg-white">
+                  <tbody className="bg-gray-100">
                     {props.jobs.map(
                       (job, i) =>
                         job.is_done && (

@@ -13,10 +13,10 @@ class JobsController < ApplicationController
 
     # create a job
     def create
-        if current_user
-            job = current_user.jobs.create!(job_params)
+        # if current_user
+           job = Job.create!(job_params)
             render json: job, status: :created
-        end
+        # end
     end
     
 

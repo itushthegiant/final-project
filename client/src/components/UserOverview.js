@@ -9,7 +9,7 @@ function UserOverview({ currentUser }) {
     const [properties, setProperties] = useState([])
     const [currentProperty, setCurrentProperty] = useState('')
     const [deleteClicked, setDeleteClicked] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
 
     useEffect(() => {
@@ -18,9 +18,9 @@ function UserOverview({ currentUser }) {
                 const response = await baseURL.get('/properties', { withCredentials: true })
                 if (response.statusText === 'OK') {
                     setProperties(response.data)
-                    setIsLoading(true)
-                } else {
                     setIsLoading(false)
+                } else {
+                    setIsLoading(true)
                 }
             } catch (err) {
                 console.log(err)
@@ -51,7 +51,7 @@ function UserOverview({ currentUser }) {
 
     return (
         <div>
-            {!isLoading ?
+            {isLoading ?
                 <Loading />
                 :
                 !deleteClicked ?

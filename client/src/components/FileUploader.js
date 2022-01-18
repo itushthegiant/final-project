@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 // import ReactDOM from 'react-dom'
-import { API_URL } from '../api/constants'
+import { API_URL } from "../api/constants";
 
 // Import React FilePond
 // import { FilePond } from "react-filepond";
@@ -8,8 +8,7 @@ import { FilePond, registerPlugin } from "react-filepond";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-
+import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 
 // Import the Image EXIF Orientation and Image Preview plugins
 // Note: These need to be installed separately
@@ -23,62 +22,60 @@ registerPlugin(FilePondPluginFileValidateType);
 
 // Our app
 class FileUploader extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            // Set initial files, type 'local' means this is a file
-            // that has already been uploaded to the server (see docs)
-            //   files: [
-            //     {`
-            //       source: "index.html",
-            //       options: {
-            //         type: "local"
-            //       }
-            //     }
-            //   ]
-        };
-    }
+    this.state = {
+      // Set initial files, type 'local' means this is a file
+      // that has already been uploaded to the server (see docs)
+      //   files: [
+      //     {`
+      //       source: "index.html",
+      //       options: {
+      //         type: "local"
+      //       }
+      //     }
+      //   ]
+    };
+  }
 
-    // handleInit() {
-    //     console.log("FilePond instance has initialised", this.pond);
-    // }
+  // handleInit() {
+  //     console.log("FilePond instance has initialised", this.pond);
+  // }
 
-
-
-    render() {
-        return (
-            <div className="App">
-                <FilePond
-                    ref={ref => (this.pond = ref)}
-                    files={this.state.files}
-                    allowMultiple={true}
-                    allowReorder={true}
-                    maxFiles={5}
-                    allowFileTypeValidation={true}
-                    allowRemove={false}
-                    allowRevert={false}
-                    acceptedFileTypes={['image/*']}
-                    server={{
-                        url: `${API_URL}`,
-                        process: {
-                            url: `/jobs/${this.props.newJobId}/upload-images`,
-                            method: 'PATCH',
-                            withCredentials: true
-                        },
-                        // revert: `/jobs/${this.props.newJobId}/delete-images`
-                    }}
-                    name="images"
-                    // oninit={() => this.handleInit()}
-                    onupdatefiles={fileItems => {
-                        // Set currently active file objects to this.state
-                        this.setState({
-                            files: fileItems.map(fileItem => fileItem.file)
-                        });
-                    }}
-                />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="App">
+        <FilePond
+          ref={(ref) => (this.pond = ref)}
+          files={this.state.files}
+          allowMultiple={true}
+          allowReorder={true}
+          maxFiles={5}
+          allowFileTypeValidation={true}
+          allowRemove={false}
+          allowRevert={false}
+          acceptedFileTypes={["image/*"]}
+          server={{
+            url: `${API_URL}`,
+            process: {
+              url: `/jobs/${this.props.newJobId}/upload-images`,
+              method: "PATCH",
+              withCredentials: true,
+            },
+            // revert: `/jobs/${this.props.newJobId}/delete-images`
+          }}
+          name="images"
+          // oninit={() => this.handleInit()}
+          onupdatefiles={(fileItems) => {
+            // Set currently active file objects to this.state
+            this.setState({
+              files: fileItems.map((fileItem) => fileItem.file),
+            });
+          }}
+        />
+      </div>
+    );
+  }
 }
-export default FileUploader
+export default FileUploader;

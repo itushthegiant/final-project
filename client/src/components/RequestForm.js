@@ -40,7 +40,8 @@ function RequestForm() {
                     urgent,
                     contact,
                     description,
-                    property_id: id
+                    property_id: id,
+                    user_id: currentProperty.user.id
                 },
                 { withCredentials: true },
             )
