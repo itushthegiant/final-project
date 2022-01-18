@@ -10,6 +10,8 @@ function Jobs({ currentUser }) {
   const [sort, setSort] = useState(false);
   const [currentJob, setCurrentJob] = useState(null);
   const [isDone, setIsDone] = useState(false);
+  const [doneJobs, setDoneJobs] = useState([]);
+  const [unDoneJobs, setUnDoneJobs] = useState([])
 
   // fetch all jobs
   useEffect(() => {
@@ -20,6 +22,12 @@ function Jobs({ currentUser }) {
             withCredentials: true,
           });
           setJobs(response.data);
+          const newUnDoneJobs = response.data.filter(job => job.is_done === false)
+          setUnDoneJobs(newUnDoneJobs);
+          setIsDone(false);
+          setIsApproved(true)
+          const newJobs = response.data.filter(job => job.is_done === true)
+          setDoneJobs(newJobs)
         } catch (err) {
           console.log(err);
         }
@@ -27,6 +35,8 @@ function Jobs({ currentUser }) {
       fetchJobs();
     }
   }, [isApproved, setIsApproved, sort, isDone]);
+   
+  
 
   // filter the jobs after delete request
   const filterJobs = (id) => {
@@ -111,9 +121,10 @@ function Jobs({ currentUser }) {
       ) : (
         <div>
           <div
-            className={isClicked ? "flex bg-gray-600 bg-opacity-60" : "flex"}
+            className={isClicked ? "flex bg-gray-600 bg-opacity-60" : "flex justify-center items-center"}
           >
             <JobsTable
+              unDoneJobs={unDoneJobs}
               sortByUrgency={sortByUrgency}
               handleDone={handleDone}
               handleRejection={handleRejection}
@@ -128,14 +139,14 @@ function Jobs({ currentUser }) {
             />
           </div>
           <div
-            className={isClicked ? "flex bg-gray-600 bg-opacity-60" : "flex"}
+            className={isClicked ? "flex bg-gray-600 bg-opacity-60" : "flex justify-center items-center"}
           >
             <PastJobs
               fetchJob={fetchJob}
               currentJob={currentJob}
               isClicked={isClicked}
               setIsClicked={setIsClicked}
-              jobs={jobs}
+              jobs={doneJobs}
               currentUser={currentUser}
               sort={sort}
             />
