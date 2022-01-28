@@ -4,7 +4,7 @@ import Carousel from "../modals/Carousel";
 function JobsTable(props) {
   if (props.unDoneJobs.length === 0) {
     return (
-      <div className="border-8 border-none shadow-2xl rounded-3xl flex items-center justify-center mt-32  bg-blue-300 bg-opacity-70">
+      <div className="border-8 border-none shadow-2xl rounded-3xl flex items-center justify-center mt-20 mb-10 bg-blue-300 bg-opacity-70">
         <h1 className="bold m-10 text-3xl">There are no ongoing jobs</h1>
       </div>
     )
@@ -27,7 +27,7 @@ function JobsTable(props) {
               {!props.sort ? "Sort by urgency" : "Undo"}
             </button>
             {/* table head */}
-            <div className="flex flex-col">
+            <div className="overflow-y-auto h-auto mb-10 flex flex-col">
               <div className="w-full">
                 <div className="border-b border-gray-200 shadow">
                   <table>
@@ -161,7 +161,7 @@ function JobsTable(props) {
                                     onClick={() => {
                                       props.handleRejection(job.id);
                                     }}
-                                    className="px-4 py-1 text-sm ml-2 text-white bg-red-400 rounded hover:bg-red-600 hover:text-white transition duration-300"
+                                    className="px-4 py-1 text-sm ml-5 text-white bg-red-400 rounded hover:bg-red-600 hover:text-white transition duration-300"
                                   >
                                     Reject
                                   </button>
@@ -192,7 +192,7 @@ function JobsTable(props) {
                                 ) : (
                                   <button
                                     disabled
-                                    className="px-4 py-1 text-sm ml-2 text-white bg-green-100 rounded"
+                                    className="px-4 py-1 text-sm ml-7 text-white bg-green-100 rounded"
                                   >
                                     Done
                                   </button>

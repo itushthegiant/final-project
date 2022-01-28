@@ -10,7 +10,7 @@ const PastJobs = (props) => {
     )
   } else {
     return (
-      <div className="container flex justify-center mx-auto mt-20 mb-20 ">
+      <div className="container flex justify-center mx-auto mb-20 ">
         {/* carousel is rendered if images are clicked */}
         {props.isClicked ? (
           <Carousel setIsClicked={props.setIsClicked} job={props.currentJob} />

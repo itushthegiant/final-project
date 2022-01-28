@@ -71,7 +71,7 @@ function UserOverview({ currentUser }) {
                   Overview
                 </h1>
               </div>
-              <div className="flex justify-center ml-5 mr-5">
+              <div className="overflow-x-auto flex justify-center ml-5 mr-5">
                 {renderCards()}
               </div>
             </div>
