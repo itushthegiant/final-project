@@ -1,2 +1,2 @@
-export const API_URL = !window.location.href.includes('localhost') ? 'http://linkedserv.com:3000' : 'http://localhost:3000'
-export const FRONT_URL = !window.location.href.includes('localhost') ? 'http://linkedserv.com' : 'http://localhost:4000'
+export const API_URL = !window.location.href.includes('localhost') ? 'https://linkedserv.com' : 'http://localhost:3000'
+export const FRONT_URL = !window.location.href.includes('localhost') ? 'https://api.linkedserv.com' : 'http://localhost:4000'
