@@ -5,9 +5,9 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates :username, presence: true, uniqueness: true, length: { maximum: 20, minimum: 6} 
-    validates :password, presence: true, length: { maximum: 20, minimum: 6} 
-    validates :password_confirmation, presence: true, length: { maximum: 20, minimum: 6} 
-    validates :email_address, presence: true, uniqueness: true
-    validates_presence_of :company_name
+    # validates :username, presence: true, uniqueness: true, length: { maximum: 20, minimum: 6} 
+    # validates :password, presence: true, length: { maximum: 20, minimum: 6} 
+    # validates :password_confirmation, presence: true, length: { maximum: 20, minimum: 6} 
+    # validates :email_address, presence: true, uniqueness: true
+    # validates_presence_of :company_name
 end
